@@ -41,7 +41,6 @@ const translations = {
     'pkg.getStarted': 'Get Started',
     // Starter
     'pkg.starter.tier': 'Starter',
-    'pkg.starter.price': '300–500',
     'pkg.starter.tagline': 'Perfect for practices taking their first steps on social media',
     'pkg.starter.f1': '✅ 4 posts/month',
     'pkg.starter.f2': '✅ Basic community management',
@@ -51,7 +50,6 @@ const translations = {
     'pkg.starter.f6': '❌ Paid ad management',
     // Professional
     'pkg.pro.tier': 'Professional',
-    'pkg.pro.price': '600–1,000',
     'pkg.pro.tagline': 'For growing practices ready to build a real social presence',
     'pkg.pro.f1': '✅ 8 posts/month (2 per week)',
     'pkg.pro.f2': '✅ Full community management',
@@ -63,7 +61,6 @@ const translations = {
     'pkg.pro.f8': '❌ Paid ad management',
     // Elite
     'pkg.premium.tier': 'Elite',
-    'pkg.premium.price': '1,200–2,000',
     'pkg.premium.tagline': 'Full content creation + 24/7 community management',
     'pkg.premium.f1': '✅ 12–16 posts/month (3–4/week)',
     'pkg.premium.f2': '✅ Professional content creation',
@@ -74,9 +71,8 @@ const translations = {
     'pkg.premium.f7': '✅ Strategy consultation (1×/month)',
     'pkg.premium.f8': '❌ Paid ad management',
     // VIP
-    'pkg.vip.badge': '⭐⭐⭐ Full Management',
+    'pkg.vip.badge': '⭐⭐ Full Management',
     'pkg.vip.tier': 'VIP',
-    'pkg.vip.price': '2,000–4,000',
     'pkg.vip.tagline': 'White-glove full management for ambitious multi-location practices',
     'pkg.vip.f1': '✅ 20+ posts/month',
     'pkg.vip.f2': '✅ Unlimited reels',
@@ -85,6 +81,17 @@ const translations = {
     'pkg.vip.f5': '✅ Brand strategy',
     'pkg.vip.f6': '✅ Monthly consultation',
     'pkg.vip.f7': '✅ Competitive analysis',
+    // Enterprise
+    'pkg.enterprise.badge': '⭐⭐⭐ Top Tier',
+    'pkg.enterprise.tier': 'Enterprise',
+    'pkg.enterprise.tagline': 'The complete growth engine for top dental practices',
+    'pkg.enterprise.f1': '✅ Unlimited posts & reels',
+    'pkg.enterprise.f2': '✅ Paid ads management + budget',
+    'pkg.enterprise.f3': '✅ Full brand & content strategy',
+    'pkg.enterprise.f4': '✅ 24/7 community management',
+    'pkg.enterprise.f5': '✅ Weekly strategy sessions',
+    'pkg.enterprise.f6': '✅ Influencer + PR outreach',
+    'pkg.enterprise.f7': '✅ Multi-location coverage',
     'pkg.note': '💡 Not sure which plan fits? <a href="#contact">Let\'s chat</a> — we\'ll recommend the right fit for your practice size and goals.',
     // Testimonials
     'testi.tag': 'Social Proof',
@@ -197,7 +204,6 @@ const translations = {
     'pkg.getStarted': 'Comenzar Ahora',
     // Starter
     'pkg.starter.tier': 'Básico',
-    'pkg.starter.price': '300–500',
     'pkg.starter.tagline': 'Perfecto para clínicas que dan sus primeros pasos en redes sociales',
     'pkg.starter.f1': '✅ 4 posts/mes',
     'pkg.starter.f2': '✅ Community management básico',
@@ -207,7 +213,6 @@ const translations = {
     'pkg.starter.f6': '❌ Gestión de anuncios pagados',
     // Professional
     'pkg.pro.tier': 'Estándar',
-    'pkg.pro.price': '600–1,000',
     'pkg.pro.tagline': 'Para clínicas en crecimiento listas para construir presencia real',
     'pkg.pro.f1': '✅ 8 posts/mes (2 por semana)',
     'pkg.pro.f2': '✅ Community management completo',
@@ -219,7 +224,6 @@ const translations = {
     'pkg.pro.f8': '❌ Gestión de anuncios pagados',
     // Elite
     'pkg.premium.tier': 'Premium',
-    'pkg.premium.price': '1.200–2.000',
     'pkg.premium.tagline': 'Creación de contenido profesional + community management 24/7',
     'pkg.premium.f1': '✅ 12–16 posts/mes (3–4/semana)',
     'pkg.premium.f2': '✅ Creación de contenido profesional',
@@ -230,9 +234,8 @@ const translations = {
     'pkg.premium.f7': '✅ Consultoría de estrategia (1×/mes)',
     'pkg.premium.f8': '❌ Gestión de anuncios pagados',
     // VIP
-    'pkg.vip.badge': '⭐⭐⭐ Full Management',
+    'pkg.vip.badge': '⭐⭐ Full Management',
     'pkg.vip.tier': 'VIP',
-    'pkg.vip.price': '2.000–4.000',
     'pkg.vip.tagline': 'Gestión completa de primer nivel para clínicas con múltiples sedes',
     'pkg.vip.f1': '✅ 20+ posts/mes',
     'pkg.vip.f2': '✅ Reels ilimitados',
@@ -241,6 +244,17 @@ const translations = {
     'pkg.vip.f5': '✅ Estrategia de marca',
     'pkg.vip.f6': '✅ Consultoría mensual',
     'pkg.vip.f7': '✅ Análisis de competencia',
+    // Enterprise
+    'pkg.enterprise.badge': '⭐⭐⭐ Top Tier',
+    'pkg.enterprise.tier': 'Enterprise',
+    'pkg.enterprise.tagline': 'El motor de crecimiento completo para las mejores clínicas dentales',
+    'pkg.enterprise.f1': '✅ Posts y reels ilimitados',
+    'pkg.enterprise.f2': '✅ Gestión de anuncios pagados + presupuesto',
+    'pkg.enterprise.f3': '✅ Estrategia completa de marca y contenido',
+    'pkg.enterprise.f4': '✅ Community management 24/7',
+    'pkg.enterprise.f5': '✅ Sesiones de estrategia semanales',
+    'pkg.enterprise.f6': '✅ Influencer + relaciones públicas',
+    'pkg.enterprise.f7': '✅ Cobertura para múltiples sedes',
     'pkg.note': '💡 ¿No sabes cuál plan elegir? <a href="#contact">Hablemos</a> — te recomendaremos el que mejor se adapte al tamaño y objetivos de tu clínica.',
     // Testimonials
     'testi.tag': 'Prueba Social',

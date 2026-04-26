@@ -455,9 +455,15 @@ a { color: inherit; text-decoration: none; }
 #packages { padding: 100px 0; background: var(--dark-2); }
 .packages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
   align-items: start;
+}
+@media (max-width: 1280px) {
+  .packages-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .packages-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .package-card {
   background: var(--dark-3);
@@ -491,6 +497,16 @@ a { color: inherit; text-decoration: none; }
 }
 .vip-badge {
   background: var(--orange);
+}
+.enterprise-badge {
+  background: linear-gradient(135deg, #7C4DFF, var(--orange));
+}
+.package-card.enterprise {
+  border-color: #7C4DFF;
+  background: linear-gradient(135deg, rgba(124,77,255,0.08) 0%, var(--dark-3) 100%);
+}
+.package-card.enterprise:hover {
+  box-shadow: 0 8px 48px rgba(124,77,255,0.2);
 }
 .package-tier { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; }
 .package-price {
