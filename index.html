@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DentalVid – Video Marketing for Dental Clinics</title>
-  <meta name="description" content="Grow your dental practice with professional video marketing. Attract more patients, build trust, and fill your calendar faster." />
+  <title>Benjamin Tapia | Social Media & Ads Management for Clinics</title>
+  <meta name="description" content="Professional social media management and paid ads for dental & aesthetic clinics in USA. Increase patient inquiries by 25-30% in 30 days." />
+  <meta name="keywords" content="dental marketing, social media management, paid ads, dental clinic, aesthetic clinic, USA, Facebook ads, Instagram ads, Google ads" />
+  <meta property="og:title" content="Benjamin Tapia | Social Media & Ads for Dental Clinics" />
+  <meta property="og:description" content="Increase patient inquiries by 25-30% in 30 days. Professional social media & paid ads for dental and aesthetic clinics." />
+  <meta property="og:type" content="website" />
+  <!-- Google Analytics placeholder -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -13,24 +20,37 @@
 <body>
 
   <!-- ===== LANGUAGE MODAL ===== -->
-  <div id="langModal" class="lang-modal" role="dialog" aria-modal="true" aria-label="Select language">
+  <div id="langModal" class="lang-modal" role="dialog" aria-modal="true">
     <div class="lang-modal-card">
-      <div class="lang-modal-logo">
-        <span class="logo-icon">▶</span>
-        Dental<span class="logo-accent">Vid</span>
-      </div>
-      <p class="lang-modal-subtitle">Choose your language / Elige tu idioma</p>
+      <div class="lang-modal-logo">Benjamin <span class="accent">Tapia</span></div>
+      <p class="lang-modal-sub">Choose your language / Elige tu idioma</p>
       <div class="lang-options">
-        <button class="lang-option" data-lang="en" aria-label="English">
+        <button class="lang-option" data-lang="en">
           <span class="lang-flag">🇺🇸</span>
-          <span class="lang-name">English</span>
           <span class="lang-native">English</span>
         </button>
-        <button class="lang-option" data-lang="es" aria-label="Español">
+        <button class="lang-option" data-lang="es">
           <span class="lang-flag">🇪🇸</span>
-          <span class="lang-name">Spanish</span>
           <span class="lang-native">Español</span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CALENDLY MODAL ===== -->
+  <div id="calendlyModal" class="cal-modal" style="display:none">
+    <div class="cal-overlay" id="calOverlay"></div>
+    <div class="cal-card">
+      <button class="cal-close" id="calClose">✕</button>
+      <h3 data-i18n="cal.title">Book Your Free 15-Min Consultation</h3>
+      <p data-i18n="cal.sub">Schedule a call with Benjamin to discuss your clinic's goals.</p>
+      <div class="cal-embed">
+        <!-- Replace YOUR_CALENDLY_URL with your actual Calendly link -->
+        <div class="cal-placeholder">
+          <div class="cal-icon">📅</div>
+          <p data-i18n="cal.placeholder">Click below to open Calendly</p>
+          <a href="https://calendly.com/benjaminatapia" target="_blank" class="btn btn-green btn-lg" data-i18n="cal.open">Open Calendly →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -38,397 +58,577 @@
   <!-- ===== NAVBAR ===== -->
   <nav id="navbar">
     <div class="nav-container">
-      <a href="#" class="logo">
-        <span class="logo-icon">▶</span>
-        Dental<span class="logo-accent">Vid</span>
+      <a href="#home" class="nav-logo">
+        Benjamin <span class="accent">Tapia</span>
+        <span class="nav-logo-sub" data-i18n="nav.logoSub">Social Media & Ads</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#how-it-works" data-i18n="nav.hiw">How It Works</a></li>
-        <li><a href="#packages" data-i18n="nav.packages">Packages</a></li>
-        <li><a href="#testimonials" data-i18n="nav.results">Results</a></li>
-        <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+        <li><a href="#home" data-i18n="nav.home">Home</a></li>
+        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="#process" data-i18n="nav.process">Process</a></li>
+        <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
       <div class="nav-right">
-        <a href="#contact" class="btn btn-nav" data-i18n="nav.cta">Book a Call</a>
-        <div class="lang-toggle" id="langToggle" title="Change language">
+        <div class="lang-toggle">
           <button class="lang-toggle-btn active" data-lang="en">EN</button>
-          <span class="lang-sep">|</span>
+          <span>|</span>
           <button class="lang-toggle-btn" data-lang="es">ES</button>
         </div>
+        <button class="btn btn-green" id="navCta" data-i18n="nav.cta">Book Consultation</button>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
   <!-- ===== HERO ===== -->
-  <section id="hero">
-    <div class="hero-bg-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
+  <section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge animate-fade-up" data-i18n="hero.badge">🦷 Dental & Aesthetic Clinics — USA</div>
+        <h1 class="animate-fade-up delay-1" data-i18n="hero.h1">Attract More Patients with Professional Social Media &amp; Paid Ads</h1>
+        <p class="hero-sub animate-fade-up delay-2" data-i18n="hero.sub">Increase inquiries by 25-30% in 30 days | Join 50+ clinics across the USA</p>
+        <div class="hero-ctas animate-fade-up delay-3">
+          <button class="btn btn-blue btn-lg open-cal" data-i18n="hero.cta1">Start Free Consultation</button>
+          <a href="#portfolio" class="btn btn-outline btn-lg" data-i18n="hero.cta2">View Our Results</a>
+        </div>
+        <div class="hero-trust animate-fade-up delay-4">
+          <span>⭐⭐⭐⭐⭐</span>
+          <span data-i18n="hero.trust">Trusted by 50+ clinics in Florida, Texas, California & more</span>
+        </div>
+      </div>
+      <div class="hero-visual animate-fade-up delay-2">
+        <div class="hero-card-stack">
+          <div class="hero-card hc-1">
+            <div class="hc-icon">📱</div>
+            <div class="hc-text">
+              <strong data-i18n="hero.card1t">+32% Inquiries</strong>
+              <span data-i18n="hero.card1s">Smile Center, FL</span>
+            </div>
+          </div>
+          <div class="hero-card hc-2">
+            <div class="hc-icon">🎯</div>
+            <div class="hc-text">
+              <strong data-i18n="hero.card2t">3.8× ROAS</strong>
+              <span data-i18n="hero.card2s">Premier Dental, TX</span>
+            </div>
+          </div>
+          <div class="hero-card hc-3">
+            <div class="hc-icon">⚡</div>
+            <div class="hc-text">
+              <strong data-i18n="hero.card3t">Results in 14 days</strong>
+              <span data-i18n="hero.card3s">EliteSmile, CA</span>
+            </div>
+          </div>
+          <div class="hero-main-visual">
+            <div class="phone-mockup">
+              <div class="phone-screen">
+                <div class="ig-post">
+                  <div class="ig-header">
+                    <div class="ig-avatar">BT</div>
+                    <div>
+                      <div class="ig-name">benjamintapia.ads</div>
+                      <div class="ig-location">Miami, FL</div>
+                    </div>
+                  </div>
+                  <div class="ig-image">🦷</div>
+                  <div class="ig-actions">❤️ 247 &nbsp; 💬 38 &nbsp; 🔖</div>
+                  <div class="ig-caption" data-i18n="hero.igCaption">Transform your smile ✨ Book now!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container hero-content">
-      <div class="badge animate-fade-up" data-i18n="hero.badge">🎯 #1 Video Marketing Agency for Dental Clinics</div>
-      <h1 class="animate-fade-up delay-1" data-i18n="hero.h1">
-        Turn Your Dental Practice Into a<br />
-        <span class="gradient-text">Patient-Attracting Machine</span>
-      </h1>
-      <p class="hero-sub animate-fade-up delay-2" data-i18n="hero.sub">
-        Professional video marketing that builds trust, fills your chair, and grows your revenue — without you lifting a finger.
-      </p>
-      <div class="hero-ctas animate-fade-up delay-3">
-        <a href="https://calendly.com/dentalvid/strategy-call" target="_blank" class="btn btn-primary btn-lg pulse" data-i18n="hero.cta1">
-          🗓 Book Free Strategy Call
-        </a>
-        <a href="#packages" class="btn btn-outline btn-lg" data-i18n="hero.cta2">View Packages →</a>
-      </div>
-      <div class="hero-stats animate-fade-up delay-4">
-        <div class="stat">
-          <strong>350+</strong>
-          <span data-i18n="hero.stat1">Clinics Served</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <strong>4.2M+</strong>
-          <span data-i18n="hero.stat2">Views Generated</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <strong>3×</strong>
-          <span data-i18n="hero.stat3">Avg. ROI in 90 days</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-video-preview animate-fade-up delay-3">
-      <div class="video-mockup">
-        <div class="video-play-btn">▶</div>
-        <div class="video-overlay-text" data-i18n="hero.videoLabel">See a sample reel</div>
-      </div>
+    <div class="scroll-indicator">
+      <span data-i18n="hero.scroll">Scroll to explore</span>
+      <div class="chevron-down"></div>
     </div>
   </section>
 
-  <!-- ===== LOGOS BAND ===== -->
-  <section id="logos-band">
+  <!-- ===== SOCIAL PROOF BAND ===== -->
+  <div class="trust-band">
     <div class="container">
-      <p class="logos-label" data-i18n="logos.label">Trusted by practices across the USA</p>
-      <div class="logos-track">
-        <span>SmilePlus Dental</span>
-        <span>BrightSmile Co.</span>
-        <span>ClearPath Orthodontics</span>
-        <span>Premier Dental Group</span>
-        <span>Family First Dental</span>
-        <span>Elite Smiles NYC</span>
-        <span>Coastal Dentistry</span>
-        <span>SmilePlus Dental</span>
-        <span>BrightSmile Co.</span>
-        <span>ClearPath Orthodontics</span>
+      <p class="trust-label" data-i18n="trust.label">Trusted by clinics across the USA</p>
+      <div class="trust-logos">
+        <span>SmilePlus Dental · FL</span>
+        <span>Elite Aesthetics · TX</span>
+        <span>ClearPath Ortho · CA</span>
+        <span>Premier Dental · NY</span>
+        <span>BrightSmile · AZ</span>
+        <span>LuxeSkin Clinic · CO</span>
+        <span>Family Dental Care · FL</span>
+        <span>SmilePlus Dental · FL</span>
+        <span>Elite Aesthetics · TX</span>
+        <span>ClearPath Ortho · CA</span>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ===== HOW IT WORKS ===== -->
-  <section id="how-it-works">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag" data-i18n="hiw.tag">The Process</span>
-        <h2 data-i18n="hiw.h2">From Zero to Full Calendar in 5 Simple Steps</h2>
-        <p data-i18n="hiw.sub">We handle everything — strategy, filming, editing, and distribution. You just show up.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-card animate-on-scroll">
-          <div class="step-number">01</div>
-          <div class="step-icon">🔍</div>
-          <h3 data-i18n="hiw.s1.title">Discovery Call</h3>
-          <p data-i18n="hiw.s1.body">We analyze your practice, competitors, and target patients to craft a tailored video strategy that resonates in your local market.</p>
-        </div>
-        <div class="step-card animate-on-scroll delay-1">
-          <div class="step-number">02</div>
-          <div class="step-icon">📋</div>
-          <h3 data-i18n="hiw.s2.title">Custom Strategy</h3>
-          <p data-i18n="hiw.s2.body">Our team builds a full content calendar — video scripts, posting schedule, and platform targeting — designed to attract your ideal patient.</p>
-        </div>
-        <div class="step-card animate-on-scroll delay-2">
-          <div class="step-number">03</div>
-          <div class="step-icon">🎬</div>
-          <h3 data-i18n="hiw.s3.title">Professional Production</h3>
-          <p data-i18n="hiw.s3.body">Cinematic-quality filming at your clinic (or remote production for digital content), edited with motion graphics, captions, and hooks that stop the scroll.</p>
-        </div>
-        <div class="step-card animate-on-scroll delay-3">
-          <div class="step-number">04</div>
-          <div class="step-icon">🚀</div>
-          <h3 data-i18n="hiw.s4.title">Multi-Platform Launch</h3>
-          <p data-i18n="hiw.s4.body">We publish and optimize your videos across Instagram, Facebook, YouTube, TikTok, and Google — maximizing reach without you touching a single app.</p>
-        </div>
-        <div class="step-card animate-on-scroll delay-4">
-          <div class="step-number">05</div>
-          <div class="step-icon">📈</div>
-          <h3 data-i18n="hiw.s5.title">Track &amp; Scale</h3>
-          <p data-i18n="hiw.s5.body">Monthly performance reports with real metrics — views, leads, booked appointments — and ongoing optimization to keep growth compounding.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PACKAGES ===== -->
-  <section id="packages">
+  <!-- ===== PROBLEM + SOLUTION ===== -->
+  <section id="problem" class="section bg-white">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag" data-i18n="pkg.tag">Pricing</span>
-        <h2 data-i18n="pkg.h2">Choose the Plan That Fills Your Chairs</h2>
-        <p data-i18n="pkg.sub">Transparent pricing. No hidden fees. Cancel anytime after 90 days.</p>
+        <span class="section-tag" data-i18n="prob.tag">The Problem</span>
+        <h2 data-i18n="prob.h2">Why Most Clinics Struggle to Get Patients Online</h2>
       </div>
-      <div class="packages-grid">
+      <div class="three-cols">
+        <div class="prob-card animate-on-scroll">
+          <div class="prob-icon">📸</div>
+          <h3 data-i18n="prob.c1.title">Photos Aren't Enough</h3>
+          <p data-i18n="prob.c1.body">Most clinics rely on photos and text. Patients scroll past without stopping, and you lose potential bookings every day.</p>
+        </div>
+        <div class="prob-card highlight animate-on-scroll delay-1">
+          <div class="prob-icon">🎬</div>
+          <h3 data-i18n="prob.c2.title">Videos Convert</h3>
+          <p data-i18n="prob.c2.body">Professional videos show emotion, transformation, and build the trust that turns a stranger into a booked patient.</p>
+        </div>
+        <div class="prob-card animate-on-scroll delay-2">
+          <div class="prob-icon">✅</div>
+          <h3 data-i18n="prob.c3.title">We Create It All</h3>
+          <p data-i18n="prob.c3.body">High-quality posts, reels, ad campaigns, and optimization — all done for you. You focus on patients, we handle growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- 1. Starter / Basic — $400 -->
-        <div class="package-card animate-on-scroll">
-          <div class="package-tier" data-i18n="pkg.starter.tier">Starter</div>
-          <div class="package-price">
-            <span class="price-currency">$</span>400
-            <span class="price-period">/mo</span>
+  <!-- ===== STATS ===== -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-box blue animate-on-scroll">
+          <div class="stat-num">+25%</div>
+          <div class="stat-label" data-i18n="stats.s1">Average Patient Inquiry Increase</div>
+        </div>
+        <div class="stat-box green animate-on-scroll delay-1">
+          <div class="stat-num">30</div>
+          <div class="stat-label" data-i18n="stats.s2">Days Average Time to ROI</div>
+        </div>
+        <div class="stat-box orange animate-on-scroll delay-2">
+          <div class="stat-num">50+</div>
+          <div class="stat-label" data-i18n="stats.s3">Clinics We've Helped</div>
+        </div>
+        <div class="stat-box dark animate-on-scroll delay-3">
+          <div class="stat-num">99%</div>
+          <div class="stat-label" data-i18n="stats.s4">Client Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES / PACKAGES ===== -->
+  <section id="services" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="pkg.tag">Pricing & Services</span>
+        <h2 data-i18n="pkg.h2">Choose the Plan That Grows Your Clinic</h2>
+        <p data-i18n="pkg.sub">Transparent pricing. No hidden fees. Ads budget paid directly to platforms.</p>
+      </div>
+      <div class="pkg-grid">
+
+        <!-- STARTER -->
+        <div class="pkg-card animate-on-scroll">
+          <div class="pkg-head">
+            <div class="pkg-name" data-i18n="pkg.s.name">STARTER</div>
+            <div class="pkg-price"><span class="pkg-dollar">$</span>400<span class="pkg-mo">/month</span></div>
+            <div class="pkg-desc" data-i18n="pkg.s.desc">For clinics just starting</div>
           </div>
-          <p class="package-tagline" data-i18n="pkg.starter.tagline">Perfect for practices taking their first steps on social media</p>
-          <ul class="package-features">
-            <li data-i18n="pkg.starter.f1">✅ 4 posts/month</li>
-            <li data-i18n="pkg.starter.f2">✅ Basic community management</li>
-            <li data-i18n="pkg.starter.f3">✅ 1 monthly report</li>
-            <li data-i18n="pkg.starter.f4">✅ Email support</li>
-            <li class="disabled" data-i18n="pkg.starter.f5">❌ Video reels editing</li>
-            <li class="disabled" data-i18n="pkg.starter.f6">❌ Paid ad management</li>
+          <ul class="pkg-features">
+            <li data-i18n="pkg.s.f1">✅ 4 posts/month</li>
+            <li data-i18n="pkg.s.f2">✅ 2 reels/month</li>
+            <li data-i18n="pkg.s.f3">✅ Basic community management</li>
+            <li data-i18n="pkg.s.f4">✅ Comments response &lt;24h</li>
+            <li data-i18n="pkg.s.f5">✅ 1 monthly report</li>
+            <li data-i18n="pkg.s.f6">✅ Email support</li>
+            <li class="feat-no" data-i18n="pkg.s.f7">❌ Paid ads management</li>
+            <li class="feat-no" data-i18n="pkg.s.f8">❌ Video testimonials</li>
           </ul>
-          <a href="https://calendly.com/dentalvid/strategy-call" target="_blank" class="btn btn-outline w-full" data-i18n="pkg.getStarted">Get Started</a>
+          <div class="pkg-platforms" data-i18n="pkg.s.platforms">📱 Instagram + Facebook</div>
+          <div class="pkg-contract" data-i18n="pkg.s.contract">⏱ 1 month minimum</div>
+          <button class="btn btn-outline w-full open-cal" data-i18n="pkg.s.cta">Get Started</button>
+          <div class="pkg-note" data-i18n="pkg.s.note">Budget ads: Not included</div>
         </div>
 
-        <!-- 2. Professional — $700 -->
-        <div class="package-card popular animate-on-scroll delay-1">
-          <div class="popular-badge" data-i18n="pkg.popularBadge">⭐ Most Common</div>
-          <div class="package-tier" data-i18n="pkg.pro.tier">Professional</div>
-          <div class="package-price">
-            <span class="price-currency">$</span>700
-            <span class="price-period">/mo</span>
+        <!-- PROFESSIONAL (featured) -->
+        <div class="pkg-card featured animate-on-scroll delay-1">
+          <div class="pkg-ribbon" data-i18n="pkg.p.ribbon">MOST POPULAR</div>
+          <div class="pkg-head">
+            <div class="pkg-name" data-i18n="pkg.p.name">PROFESSIONAL</div>
+            <div class="pkg-price"><span class="pkg-dollar">$</span>750<span class="pkg-mo">/month</span></div>
+            <div class="pkg-desc" data-i18n="pkg.p.desc">For growing clinics</div>
           </div>
-          <p class="package-tagline" data-i18n="pkg.pro.tagline">For growing practices ready to build a real social presence</p>
-          <ul class="package-features">
-            <li data-i18n="pkg.pro.f1">✅ 8 posts/month (2 per week)</li>
-            <li data-i18n="pkg.pro.f2">✅ Full community management</li>
-            <li data-i18n="pkg.pro.f3">✅ Comment &amp; DM replies</li>
-            <li data-i18n="pkg.pro.f4">✅ 2 monthly reports</li>
-            <li data-i18n="pkg.pro.f5">✅ Engagement analysis</li>
-            <li data-i18n="pkg.pro.f6">✅ Email + chat support</li>
-            <li class="disabled" data-i18n="pkg.pro.f7">❌ Video reels editing</li>
-            <li class="disabled" data-i18n="pkg.pro.f8">❌ Paid ad management</li>
+          <ul class="pkg-features">
+            <li data-i18n="pkg.p.f1">✅ 8 posts/month (2 per week)</li>
+            <li data-i18n="pkg.p.f2">✅ 4 reels/month (30–45 sec)</li>
+            <li data-i18n="pkg.p.f3">✅ Complete community management</li>
+            <li data-i18n="pkg.p.f4">✅ Comments/DMs response &lt;4h</li>
+            <li data-i18n="pkg.p.f5">✅ Engagement analysis</li>
+            <li data-i18n="pkg.p.f6">✅ 2 monthly detailed reports</li>
+            <li data-i18n="pkg.p.f7">✅ Email + chat support</li>
+            <li data-i18n="pkg.p.f8">✅ Ads setup &amp; monitoring included</li>
           </ul>
-          <a href="https://calendly.com/dentalvid/strategy-call" target="_blank" class="btn btn-primary w-full" data-i18n="pkg.getStarted">Get Started</a>
+          <div class="pkg-platforms" data-i18n="pkg.p.platforms">📱 Instagram + Facebook + TikTok</div>
+          <div class="pkg-ads" data-i18n="pkg.p.ads">💰 Ads budget: $500–1,000/mo (client pays platform)</div>
+          <div class="pkg-contract" data-i18n="pkg.p.contract">⏱ 3 months minimum</div>
+          <button class="btn btn-green w-full open-cal" data-i18n="pkg.p.cta">Start Now</button>
+          <div class="pkg-note green-note" data-i18n="pkg.p.note">⭐ Most popular option</div>
         </div>
 
-        <!-- 3. Elite — $1,000 -->
-        <div class="package-card animate-on-scroll delay-2">
-          <div class="package-tier" data-i18n="pkg.premium.tier">Elite</div>
-          <div class="package-price">
-            <span class="price-currency">$</span>1,000
-            <span class="price-period">/mo</span>
+        <!-- PREMIUM -->
+        <div class="pkg-card animate-on-scroll delay-2">
+          <div class="pkg-head">
+            <div class="pkg-name" data-i18n="pkg.pr.name">PREMIUM</div>
+            <div class="pkg-price"><span class="pkg-dollar">$</span>1,200<span class="pkg-mo">/month</span></div>
+            <div class="pkg-desc" data-i18n="pkg.pr.desc">For serious growth</div>
           </div>
-          <p class="package-tagline" data-i18n="pkg.premium.tagline">Full content creation + 24/7 community management</p>
-          <ul class="package-features">
-            <li data-i18n="pkg.premium.f1">✅ 12–16 posts/month (3–4/week)</li>
-            <li data-i18n="pkg.premium.f2">✅ Professional content creation</li>
-            <li data-i18n="pkg.premium.f3">✅ Video reels editing (2–4/month)</li>
-            <li data-i18n="pkg.premium.f4">✅ 24/7 community management</li>
-            <li data-i18n="pkg.premium.f5">✅ Influencer outreach</li>
-            <li data-i18n="pkg.premium.f6">✅ 4 detailed monthly reports</li>
-            <li data-i18n="pkg.premium.f7">✅ Strategy consultation (1×/month)</li>
-            <li class="disabled" data-i18n="pkg.premium.f8">❌ Paid ad management</li>
+          <ul class="pkg-features">
+            <li data-i18n="pkg.pr.f1">✅ 12 posts/month (3 per week)</li>
+            <li data-i18n="pkg.pr.f2">✅ 8 reels/month (60 sec)</li>
+            <li data-i18n="pkg.pr.f3">✅ 1 advanced carousel/month</li>
+            <li data-i18n="pkg.pr.f4">✅ Professional content creation</li>
+            <li data-i18n="pkg.pr.f5">✅ 24/7 community management</li>
+            <li data-i18n="pkg.pr.f6">✅ Comments/DMs response &lt;2h</li>
+            <li data-i18n="pkg.pr.f7">✅ 4 monthly detailed reports</li>
+            <li data-i18n="pkg.pr.f8">✅ Strategy consultation 1×/month</li>
+            <li data-i18n="pkg.pr.f9">✅ Advanced ads management</li>
+            <li data-i18n="pkg.pr.f10">✅ A/B testing &amp; optimization</li>
+            <li data-i18n="pkg.pr.f11">✅ Landing page optimization</li>
+            <li data-i18n="pkg.pr.f12">✅ Weekly ROAS reports</li>
           </ul>
-          <a href="https://calendly.com/dentalvid/strategy-call" target="_blank" class="btn btn-outline w-full" data-i18n="pkg.getStarted">Get Started</a>
+          <div class="pkg-platforms" data-i18n="pkg.pr.platforms">📱 Instagram + Facebook + TikTok + Google Ads</div>
+          <div class="pkg-ads" data-i18n="pkg.pr.ads">💰 Ads budget: $1,000–2,000/mo (client pays platform)</div>
+          <div class="pkg-contract" data-i18n="pkg.pr.contract">⏱ 3 months minimum</div>
+          <button class="btn btn-blue w-full open-cal" data-i18n="pkg.pr.cta">Get Premium</button>
+          <div class="pkg-note" data-i18n="pkg.pr.note">Best for growing clinics</div>
         </div>
 
-        <!-- 4. VIP — $1,200 -->
-        <div class="package-card vip animate-on-scroll delay-3">
-          <div class="popular-badge vip-badge" data-i18n="pkg.vip.badge">⭐⭐ Full Management</div>
-          <div class="package-tier" data-i18n="pkg.vip.tier">VIP</div>
-          <div class="package-price">
-            <span class="price-currency">$</span>1,200
-            <span class="price-period">/mo</span>
+        <!-- VIP -->
+        <div class="pkg-card vip animate-on-scroll delay-3">
+          <div class="pkg-head">
+            <div class="pkg-name" data-i18n="pkg.v.name">VIP</div>
+            <div class="pkg-price"><span class="pkg-dollar">$</span>2,000<span class="pkg-mo">/month</span></div>
+            <div class="pkg-desc" data-i18n="pkg.v.desc">For premium clinics</div>
           </div>
-          <p class="package-tagline" data-i18n="pkg.vip.tagline">White-glove full management for ambitious multi-location practices</p>
-          <ul class="package-features">
-            <li data-i18n="pkg.vip.f1">✅ 20+ posts/month</li>
-            <li data-i18n="pkg.vip.f2">✅ Unlimited reels</li>
-            <li data-i18n="pkg.vip.f3">✅ Paid ads management ⭐</li>
-            <li data-i18n="pkg.vip.f4">✅ Full community management</li>
-            <li data-i18n="pkg.vip.f5">✅ Brand strategy</li>
-            <li data-i18n="pkg.vip.f6">✅ Monthly consultation</li>
-            <li data-i18n="pkg.vip.f7">✅ Competitive analysis</li>
+          <ul class="pkg-features">
+            <li data-i18n="pkg.v.f1">✅ 16+ posts/month (4 per week)</li>
+            <li data-i18n="pkg.v.f2">✅ 12 reels/month (90+ sec, high-production)</li>
+            <li data-i18n="pkg.v.f3">✅ 2 advanced carousels/month</li>
+            <li data-i18n="pkg.v.f4">✅ 2 professional video testimonials/month</li>
+            <li data-i18n="pkg.v.f5">✅ Professional content creation</li>
+            <li data-i18n="pkg.v.f6">✅ 24/7 premium community management</li>
+            <li data-i18n="pkg.v.f7">✅ DMs response &lt;30 minutes</li>
+            <li data-i18n="pkg.v.f8">✅ 4 reports + daily analytics</li>
+            <li data-i18n="pkg.v.f9">✅ 2 strategy consultations/month</li>
+            <li data-i18n="pkg.v.f10">✅ Advanced ads (FB, IG, Google, TikTok)</li>
+            <li data-i18n="pkg.v.f11">✅ A/B testing exhaustive</li>
+            <li data-i18n="pkg.v.f12">✅ Landing page creation &amp; optimization</li>
+            <li data-i18n="pkg.v.f13">✅ Daily ROAS reports</li>
+            <li data-i18n="pkg.v.f14">✅ Monthly competitive analysis</li>
+            <li data-i18n="pkg.v.f15">✅ Priority 24/7 phone support</li>
           </ul>
-          <a href="https://calendly.com/dentalvid/strategy-call" target="_blank" class="btn btn-outline w-full" data-i18n="pkg.getStarted">Get Started</a>
-        </div>
-
-        <!-- 5. Enterprise — $1,600 -->
-        <div class="package-card enterprise animate-on-scroll delay-4">
-          <div class="popular-badge enterprise-badge" data-i18n="pkg.enterprise.badge">⭐⭐⭐ Top Tier</div>
-          <div class="package-tier" data-i18n="pkg.enterprise.tier">Enterprise</div>
-          <div class="package-price">
-            <span class="price-currency">$</span>1,600
-            <span class="price-period">/mo</span>
-          </div>
-          <p class="package-tagline" data-i18n="pkg.enterprise.tagline">The complete growth engine for top dental practices</p>
-          <ul class="package-features">
-            <li data-i18n="pkg.enterprise.f1">✅ Unlimited posts &amp; reels</li>
-            <li data-i18n="pkg.enterprise.f2">✅ Paid ads management + budget</li>
-            <li data-i18n="pkg.enterprise.f3">✅ Full brand &amp; content strategy</li>
-            <li data-i18n="pkg.enterprise.f4">✅ 24/7 community management</li>
-            <li data-i18n="pkg.enterprise.f5">✅ Weekly strategy sessions</li>
-            <li data-i18n="pkg.enterprise.f6">✅ Influencer + PR outreach</li>
-            <li data-i18n="pkg.enterprise.f7">✅ Multi-location coverage</li>
-          </ul>
-          <a href="https://calendly.com/dentalvid/strategy-call" target="_blank" class="btn btn-primary w-full" data-i18n="pkg.getStarted">Get Started</a>
+          <div class="pkg-platforms" data-i18n="pkg.v.platforms">📱 Instagram + Facebook + TikTok + Google + LinkedIn</div>
+          <div class="pkg-ads" data-i18n="pkg.v.ads">💰 Ads budget: $2,000–3,500/mo (client pays platform)</div>
+          <div class="pkg-contract" data-i18n="pkg.v.contract">⏱ 6 months minimum</div>
+          <button class="btn btn-orange w-full open-cal" data-i18n="pkg.v.cta">Go VIP</button>
+          <div class="pkg-note" data-i18n="pkg.v.note">🏆 Most comprehensive package</div>
         </div>
 
       </div>
-      <p class="packages-note" data-i18n="pkg.note">
-        💡 Not sure which plan fits? <a href="#contact">Let's chat</a> — we'll recommend the right fit for your practice size and goals.
-      </p>
+      <p class="pkg-bottom-note" data-i18n="pkg.bottomNote">💡 Not sure which plan is right for you? <button class="link-btn open-cal" data-i18n="pkg.chat">Book a free 15-min call</button> — no pressure, no commitment.</p>
+    </div>
+  </section>
+
+  <!-- ===== COMPARISON TABLE ===== -->
+  <section id="compare" class="section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="cmp.tag">Comparison</span>
+        <h2 data-i18n="cmp.h2">Compare All Plans Side by Side</h2>
+      </div>
+      <div class="table-scroll">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th data-i18n="cmp.feature">Feature</th>
+              <th data-i18n="cmp.starter">Starter<br/><span class="th-price">$400/mo</span></th>
+              <th class="th-featured" data-i18n="cmp.pro">Professional<br/><span class="th-price">$750/mo</span></th>
+              <th data-i18n="cmp.premium">Premium<br/><span class="th-price">$1,200/mo</span></th>
+              <th data-i18n="cmp.vip">VIP<br/><span class="th-price">$2,000/mo</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td data-i18n="cmp.r1">Posts/month</td><td>4</td><td class="td-feat">8</td><td>12</td><td>16+</td></tr>
+            <tr><td data-i18n="cmp.r2">Reels/month</td><td>2</td><td class="td-feat">4</td><td>8</td><td>12</td></tr>
+            <tr><td data-i18n="cmp.r3">Carousels/month</td><td>❌</td><td class="td-feat">❌</td><td>1</td><td>2</td></tr>
+            <tr><td data-i18n="cmp.r4">Video testimonials</td><td>❌</td><td class="td-feat">❌</td><td>❌</td><td>✅ 2/mo</td></tr>
+            <tr><td data-i18n="cmp.r5">Community management</td><td data-i18n="cmp.basic">Basic</td><td class="td-feat" data-i18n="cmp.complete">Complete</td><td data-i18n="cmp.full247">24/7</td><td data-i18n="cmp.premium247">24/7 Premium</td></tr>
+            <tr><td data-i18n="cmp.r6">Monthly reports</td><td>1</td><td class="td-feat">2</td><td>4</td><td data-i18n="cmp.daily">4 + Daily</td></tr>
+            <tr><td data-i18n="cmp.r7">Ads management</td><td>❌</td><td class="td-feat">✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td data-i18n="cmp.r8">Landing pages</td><td>❌</td><td class="td-feat">❌</td><td data-i18n="cmp.optimization">Optimization</td><td data-i18n="cmp.creation">Creation + Opt.</td></tr>
+            <tr><td data-i18n="cmp.r9">Google Ads</td><td>❌</td><td class="td-feat">❌</td><td>✅</td><td>✅</td></tr>
+            <tr><td data-i18n="cmp.r10">TikTok Ads</td><td>❌</td><td class="td-feat">✅</td><td>✅</td><td>✅</td></tr>
+            <tr><td data-i18n="cmp.r11">Strategy consultations</td><td>❌</td><td class="td-feat">❌</td><td data-i18n="cmp.monthly">1×/month</td><td data-i18n="cmp.bimonthly">2×/month</td></tr>
+            <tr><td data-i18n="cmp.r12">Support</td><td>Email</td><td class="td-feat">Email + Chat</td><td>Email + Chat</td><td data-i18n="cmp.phone247">24/7 Phone</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section id="process" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="proc.tag">How It Works</span>
+        <h2 data-i18n="proc.h2">From First Call to Full Calendar — 5 Simple Steps</h2>
+        <p data-i18n="proc.sub">We handle everything. You focus on treating patients.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item animate-on-scroll">
+          <div class="tl-num">01</div>
+          <div class="tl-icon">📅</div>
+          <div class="tl-body">
+            <h3 data-i18n="proc.s1.t">Book a Call</h3>
+            <p data-i18n="proc.s1.b">Schedule your free 15-min consultation with Benjamin to discuss your clinic's goals and current challenges.</p>
+          </div>
+        </div>
+        <div class="tl-connector"></div>
+        <div class="tl-item animate-on-scroll delay-1">
+          <div class="tl-num">02</div>
+          <div class="tl-icon">💡</div>
+          <div class="tl-body">
+            <h3 data-i18n="proc.s2.t">Strategy Session</h3>
+            <p data-i18n="proc.s2.b">We analyze your clinic, target audience, competitors, and goals to create a custom social media & ads strategy.</p>
+          </div>
+        </div>
+        <div class="tl-connector"></div>
+        <div class="tl-item animate-on-scroll delay-2">
+          <div class="tl-num">03</div>
+          <div class="tl-icon">📸</div>
+          <div class="tl-body">
+            <h3 data-i18n="proc.s3.t">Content Creation</h3>
+            <p data-i18n="proc.s3.b">We create professional posts, reels, carousels, and ad creatives tailored to your clinic's brand and patient demographics.</p>
+          </div>
+        </div>
+        <div class="tl-connector"></div>
+        <div class="tl-item animate-on-scroll delay-3">
+          <div class="tl-num">04</div>
+          <div class="tl-icon">📊</div>
+          <div class="tl-body">
+            <h3 data-i18n="proc.s4.t">Launch & Optimize</h3>
+            <p data-i18n="proc.s4.b">We publish content on schedule and launch optimized paid ad campaigns that target patients actively searching for your services.</p>
+          </div>
+        </div>
+        <div class="tl-connector"></div>
+        <div class="tl-item animate-on-scroll delay-4">
+          <div class="tl-num">05</div>
+          <div class="tl-icon">✨</div>
+          <div class="tl-body">
+            <h3 data-i18n="proc.s5.t">Track Results</h3>
+            <p data-i18n="proc.s5.b">Monthly reports with clear metrics — patient inquiries, ROAS, engagement, and growth — so you always know your ROI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO / BEFORE & AFTER ===== -->
+  <section id="portfolio" class="section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="port.tag">Case Studies</span>
+        <h2 data-i18n="port.h2">Before &amp; After: Real Results</h2>
+        <p data-i18n="port.sub">See the exact transformations we've delivered for clinics like yours.</p>
+      </div>
+      <div class="cases-grid">
+
+        <div class="case-card animate-on-scroll">
+          <div class="case-ba">
+            <div class="case-side before">
+              <span class="ba-pill before-pill" data-i18n="port.before">BEFORE</span>
+              <div class="ba-visual">
+                <div class="ba-icon-lg">😴</div>
+                <p data-i18n="port.c1.before">No social presence, stock photos only, 120 followers</p>
+                <div class="ba-metric bad">8 inquiries/mo</div>
+              </div>
+            </div>
+            <div class="case-arrow">→</div>
+            <div class="case-side after">
+              <span class="ba-pill after-pill" data-i18n="port.after">AFTER</span>
+              <div class="ba-visual">
+                <div class="ba-icon-lg">🚀</div>
+                <p data-i18n="port.c1.after">Professional reels, targeted ads, 3.2K followers</p>
+                <div class="ba-metric good">+32% inquiries</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-footer">
+            <div class="case-info">
+              <strong>Smile Center Dental</strong>
+              <span>Miami, FL · 🦷 Dentist</span>
+            </div>
+            <blockquote data-i18n="port.c1.quote">"Benjamin increased our patient inquiries by 32% in just 6 weeks. Incredible ROI."</blockquote>
+            <div class="case-tag">📈 6 weeks · Professional Plan</div>
+          </div>
+        </div>
+
+        <div class="case-card animate-on-scroll delay-1">
+          <div class="case-ba">
+            <div class="case-side before">
+              <span class="ba-pill before-pill" data-i18n="port.before">BEFORE</span>
+              <div class="ba-visual">
+                <div class="ba-icon-lg">📉</div>
+                <p data-i18n="port.c2.before">Inconsistent posting, low engagement, no paid ads</p>
+                <div class="ba-metric bad">2.1% engagement</div>
+              </div>
+            </div>
+            <div class="case-arrow">→</div>
+            <div class="case-side after">
+              <span class="ba-pill after-pill" data-i18n="port.after">AFTER</span>
+              <div class="ba-visual">
+                <div class="ba-icon-lg">📈</div>
+                <p data-i18n="port.c2.after">Consistent reels, 3.8× ROAS on Google Ads, 8.7K followers</p>
+                <div class="ba-metric good">3.8× ROAS</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-footer">
+            <div class="case-info">
+              <strong>Premier Dental Group</strong>
+              <span>Austin, TX · 🦷 Multi-specialty</span>
+            </div>
+            <blockquote data-i18n="port.c2.quote">"Our Google Ads now run at 3.8× ROAS. Best marketing investment we've made."</blockquote>
+            <div class="case-tag">📈 90 days · Premium Plan</div>
+          </div>
+        </div>
+
+        <div class="case-card animate-on-scroll delay-2">
+          <div class="case-ba">
+            <div class="case-side before">
+              <span class="ba-pill before-pill" data-i18n="port.before">BEFORE</span>
+              <div class="ba-visual">
+                <div class="ba-icon-lg">😐</div>
+                <p data-i18n="port.c3.before">Generic content, no video, 3.6 Google rating</p>
+                <div class="ba-metric bad">3.6 ⭐ Google</div>
+              </div>
+            </div>
+            <div class="case-arrow">→</div>
+            <div class="case-side after">
+              <span class="ba-pill after-pill" data-i18n="port.after">AFTER</span>
+              <div class="ba-visual">
+                <div class="ba-icon-lg">⭐</div>
+                <p data-i18n="port.c3.after">Video testimonials, trust-building content, viral reels</p>
+                <div class="ba-metric good">4.9 ⭐ Google</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-footer">
+            <div class="case-info">
+              <strong>EliteSmile Aesthetics</strong>
+              <span>Los Angeles, CA · 💉 Aesthetic Clinic</span>
+            </div>
+            <blockquote data-i18n="port.c3.quote">"Our Google rating went from 3.6 to 4.9 stars. Video testimonials changed everything."</blockquote>
+            <div class="case-tag">📈 60 days · VIP Plan</div>
+          </div>
+        </div>
+
+        <div class="case-card animate-on-scroll delay-3">
+          <div class="case-ba">
+            <div class="case-side before">
+              <span class="ba-pill before-pill" data-i18n="port.before">BEFORE</span>
+              <div class="ba-visual">
+                <div class="ba-icon-lg">💸</div>
+                <p data-i18n="port.c4.before">Wasting $800/mo on ads with no strategy, zero conversions</p>
+                <div class="ba-metric bad">0.4% conv. rate</div>
+              </div>
+            </div>
+            <div class="case-arrow">→</div>
+            <div class="case-side after">
+              <span class="ba-pill after-pill" data-i18n="port.after">AFTER</span>
+              <div class="ba-visual">
+                <div class="ba-icon-lg">💰</div>
+                <p data-i18n="port.c4.after">Optimized ad campaigns, landing page, A/B testing</p>
+                <div class="ba-metric good">4.2% conv. rate</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-footer">
+            <div class="case-info">
+              <strong>BrightSmile Orthodontics</strong>
+              <span>Phoenix, AZ · 🦷 Orthodontist</span>
+            </div>
+            <blockquote data-i18n="port.c4.quote">"We went from wasting ad spend to a 4.2% conversion rate in under 45 days."</blockquote>
+            <div class="case-tag">📈 45 days · Premium Plan</div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
-  <section id="testimonials">
+  <section id="testimonials" class="section bg-light">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag" data-i18n="testi.tag">Social Proof</span>
-        <h2 data-i18n="testi.h2">Real Dentists. Real Results.</h2>
-        <p data-i18n="testi.sub">Don't take our word for it — hear from practices just like yours.</p>
+        <span class="section-tag" data-i18n="testi.tag">Testimonials</span>
+        <h2 data-i18n="testi.h2">What Our Clients Say</h2>
+        <p data-i18n="testi.sub">Real doctors. Real clinics. Real results.</p>
       </div>
-      <div class="testimonials-grid">
+      <div class="testi-grid">
 
-        <div class="testimonial-card animate-on-scroll">
-          <div class="stars">★★★★★</div>
-          <blockquote data-i18n="testi.t1.quote">
-            "We went from 12 new patients a month to 47 in just 90 days. The videos DentalVid created made us look like a top-tier practice — patients told us they chose us specifically because of our Instagram videos."
-          </blockquote>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background:#1E88E5">DM</div>
+        <div class="testi-card animate-on-scroll">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <blockquote data-i18n="testi.t1.q">"Benjamin increased our patient inquiries by 32% in just 6 weeks. His strategy was clear, communication was excellent, and the results speak for themselves. Highly recommend to any dental practice."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar blue">MT</div>
             <div>
               <strong>Dr. Michael Torres, DDS</strong>
-              <span>Torres Family Dental — Austin, TX</span>
+              <span>Smile Center Dental — Miami, FL</span>
             </div>
           </div>
-          <div class="testimonial-result" data-i18n="testi.t1.result">📈 +292% new patients in 90 days</div>
+          <div class="testi-result" data-i18n="testi.t1.r">📈 +32% inquiries · 6 weeks</div>
         </div>
 
-        <div class="testimonial-card animate-on-scroll delay-1">
-          <div class="stars">★★★★★</div>
-          <blockquote data-i18n="testi.t2.quote">
-            "I was skeptical at first — I thought video marketing was only for big brands. But within 6 weeks we had 18K views on a single Invisalign video and our bookings for clear aligners tripled. Best investment I've made."
-          </blockquote>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background:#43A047">SK</div>
+        <div class="testi-card animate-on-scroll delay-1">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <blockquote data-i18n="testi.t2.q">"I was skeptical about paid ads, but Benjamin showed us exactly where every dollar went. Our Google Ads are running at 3.8× ROAS and our Invisalign bookings tripled. Outstanding."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar green">SK</div>
             <div>
               <strong>Dr. Sarah Kim, DMD</strong>
-              <span>BrightSmile Orthodontics — Miami, FL</span>
+              <span>Premier Dental Group — Austin, TX</span>
             </div>
           </div>
-          <div class="testimonial-result" data-i18n="testi.t2.result">📈 3× Invisalign bookings in 6 weeks</div>
+          <div class="testi-result" data-i18n="testi.t2.r">📈 3.8× ROAS · Invisalign ×3</div>
         </div>
 
-        <div class="testimonial-card animate-on-scroll delay-2">
-          <div class="stars">★★★★★</div>
-          <blockquote data-i18n="testi.t3.quote">
-            "I run 3 locations and DentalVid handles everything across all of them. One team, consistent brand, incredible results. Our Google reviews went from 3.8 to 4.9 stars because video helped build patient trust before they even walked in."
-          </blockquote>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background:#FF6F00">RJ</div>
+        <div class="testi-card animate-on-scroll delay-2">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <blockquote data-i18n="testi.t3.q">"The video testimonials Benjamin created for us changed everything. Our Google rating went from 3.6 to 4.9 stars, and new patients specifically mention seeing our content before booking."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar orange">LR</div>
+            <div>
+              <strong>Dr. Laura Rodriguez, MD</strong>
+              <span>EliteSmile Aesthetics — Los Angeles, CA</span>
+            </div>
+          </div>
+          <div class="testi-result" data-i18n="testi.t3.r">📈 3.6 → 4.9 Google · 60 days</div>
+        </div>
+
+        <div class="testi-card animate-on-scroll delay-3">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <blockquote data-i18n="testi.t4.q">"We were wasting $800/month on ads that got zero results. Benjamin restructured everything — new landing page, A/B testing, proper targeting. Now we have a 4.2% conversion rate."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar dark">RJ</div>
             <div>
               <strong>Dr. Robert Johnson, DDS</strong>
-              <span>Premier Dental Group — Chicago, IL</span>
+              <span>BrightSmile Orthodontics — Phoenix, AZ</span>
             </div>
           </div>
-          <div class="testimonial-result" data-i18n="testi.t3.result">📈 3.8 → 4.9 Google rating | 3 locations</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PORTFOLIO ===== -->
-  <section id="portfolio">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag" data-i18n="port.tag">Portfolio</span>
-        <h2 data-i18n="port.h2">Before &amp; After: Our Work in Action</h2>
-        <p data-i18n="port.sub">See the transformation we create — from bland to brand.</p>
-      </div>
-      <div class="portfolio-grid">
-
-        <div class="portfolio-item animate-on-scroll">
-          <div class="portfolio-before-after">
-            <div class="ba-side before">
-              <span class="ba-label" data-i18n="port.before">BEFORE</span>
-              <div class="ba-content">
-                <div class="ba-icon">📱</div>
-                <p data-i18n="port.p1.before">Zero social presence, only stock photos, 89 followers</p>
-                <div class="ba-metric bad">12 new patients/mo</div>
-              </div>
-            </div>
-            <div class="ba-arrow">→</div>
-            <div class="ba-side after">
-              <span class="ba-label" data-i18n="port.after">AFTER</span>
-              <div class="ba-content">
-                <div class="ba-icon">🎬</div>
-                <p data-i18n="port.p1.after">Cinematic reels, authentic team videos, 4.2K followers</p>
-                <div class="ba-metric good">47 new patients/mo</div>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-label">Torres Family Dental — Austin, TX</div>
-        </div>
-
-        <div class="portfolio-item animate-on-scroll delay-1">
-          <div class="portfolio-before-after">
-            <div class="ba-side before">
-              <span class="ba-label" data-i18n="port.before">BEFORE</span>
-              <div class="ba-content">
-                <div class="ba-icon">😴</div>
-                <p data-i18n="port.p2.before">Outdated website video, no TikTok, low Invisalign bookings</p>
-                <div class="ba-metric bad">4 Invisalign cases/mo</div>
-              </div>
-            </div>
-            <div class="ba-arrow">→</div>
-            <div class="ba-side after">
-              <span class="ba-label" data-i18n="port.after">AFTER</span>
-              <div class="ba-content">
-                <div class="ba-icon">🦷</div>
-                <p data-i18n="port.p2.after">Viral before/after reels, 18K views, trending locally</p>
-                <div class="ba-metric good">13 Invisalign cases/mo</div>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-label">BrightSmile Orthodontics — Miami, FL</div>
-        </div>
-
-        <div class="portfolio-item animate-on-scroll delay-2">
-          <div class="portfolio-before-after">
-            <div class="ba-side before">
-              <span class="ba-label" data-i18n="port.before">BEFORE</span>
-              <div class="ba-content">
-                <div class="ba-icon">⭐</div>
-                <p data-i18n="port.p3.before">3.8-star rating, inconsistent branding across 3 locations</p>
-                <div class="ba-metric bad" data-i18n="port.p3.badMetric">Low trust score</div>
-              </div>
-            </div>
-            <div class="ba-arrow">→</div>
-            <div class="ba-side after">
-              <span class="ba-label" data-i18n="port.after">AFTER</span>
-              <div class="ba-content">
-                <div class="ba-icon">🏆</div>
-                <p data-i18n="port.p3.after">Unified brand story, patient video testimonials, top-3 local SEO</p>
-                <div class="ba-metric good">4.9 stars | 3× locations</div>
-              </div>
-            </div>
-          </div>
-          <div class="portfolio-label">Premier Dental Group — Chicago, IL</div>
+          <div class="testi-result" data-i18n="testi.t4.r">📈 0.4% → 4.2% conversion · 45 days</div>
         </div>
 
       </div>
@@ -436,139 +636,84 @@
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section id="faq">
+  <section id="faq" class="section bg-white">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">FAQ</span>
-        <h2 data-i18n="faq.h2">Got Questions? We've Got Answers.</h2>
+        <h2 data-i18n="faq.h2">Frequently Asked Questions</h2>
       </div>
       <div class="faq-list">
 
         <div class="faq-item animate-on-scroll">
-          <button class="faq-question" aria-expanded="false">
-            <span data-i18n="faq.q1">Do you film at my clinic or can we do it remotely?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p data-i18n="faq.a1">Both! For local clients, we can send a professional videographer to your clinic. For remote clients, we create high-quality content using screen recordings, supplied footage, animation, and AI-enhanced production. We've worked with practices in all 50 states without ever needing to visit in person.</p>
-          </div>
+          <button class="faq-q"><span data-i18n="faq.q1">How long does it take to see results?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a1">Most clinics see an increase in patient inquiries within 30 days of launching content and ads. Some see results in as little as 2 weeks, especially with paid campaigns running from day one.</p></div>
         </div>
 
         <div class="faq-item animate-on-scroll delay-1">
-          <button class="faq-question" aria-expanded="false">
-            <span data-i18n="faq.q2">How long before I see results?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p data-i18n="faq.a2">Most clients start seeing increased profile visits and DMs within 2–3 weeks. Measurable new patient bookings from video typically appear in weeks 4–8. By month 3, the majority of our clients see a 2–4× return on their investment. Results vary by market and starting point.</p>
-          </div>
+          <button class="faq-q"><span data-i18n="faq.q2">Do you offer revisions?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a2">Yes! Professional and Premium packages include 2–3 revisions per piece of content per month. The VIP package includes unlimited revisions to ensure everything is exactly right.</p></div>
         </div>
 
         <div class="faq-item animate-on-scroll delay-2">
-          <button class="faq-question" aria-expanded="false">
-            <span data-i18n="faq.q3">I'm not tech-savvy at all. Will I need to manage anything?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p data-i18n="faq.a3">Absolutely not. We handle 100% of the production, editing, scheduling, and posting. You simply review videos before they go live (or approve with auto-publishing enabled). Most of our clients spend less than 15 minutes per month on their video marketing once we're set up.</p>
-          </div>
+          <button class="faq-q"><span data-i18n="faq.q3">What if I don't like the content?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a3">We offer a 14-day satisfaction guarantee. If you're not satisfied with our work during the first 14 days, we'll revise everything or offer a full refund — no questions asked.</p></div>
         </div>
 
         <div class="faq-item animate-on-scroll delay-3">
-          <button class="faq-question" aria-expanded="false">
-            <span data-i18n="faq.q4">What makes dental video marketing different from regular social media management?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p data-i18n="faq.a4">Generic social media agencies post photos and write captions. We specialize exclusively in dental video — we know which procedures convert (implants, Invisalign, whitening), what patients are searching for, and how to build the trust that turns a viewer into a booked appointment. Our team has dental-specific scriptwriters, editors who understand HIPAA compliance, and strategists who know your market.</p>
-          </div>
+          <button class="faq-q"><span data-i18n="faq.q4">Can I see examples first?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a4">Absolutely! We have a full portfolio of before & after examples, case studies, and sample content. Book a free 15-min call and we'll walk you through everything specific to your specialty.</p></div>
         </div>
 
         <div class="faq-item animate-on-scroll delay-4">
-          <button class="faq-question" aria-expanded="false">
-            <span data-i18n="faq.q5">Is there a contract? Can I cancel?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p data-i18n="faq.a5">We require a 90-day initial commitment so we can properly execute the strategy and show real results. After that, it's month-to-month with 30-day cancellation notice. We're confident you'll want to stay — but we never lock you in beyond that first quarter.</p>
-          </div>
+          <button class="faq-q"><span data-i18n="faq.q5">Do I pay for ads separately?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a5">Yes. The ads budget (Facebook, Instagram, Google, TikTok) is paid directly by you to the platforms. Our management fee covers strategy, creation, setup, optimization, and reporting — not the ad spend itself.</p></div>
+        </div>
+
+        <div class="faq-item animate-on-scroll">
+          <button class="faq-q"><span data-i18n="faq.q6">Do you work with other specialties?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a6">Our primary focus is dental and aesthetic clinics, but we also work with dermatology, orthopedics, medical spas, and other healthcare practices in the USA.</p></div>
+        </div>
+
+        <div class="faq-item animate-on-scroll delay-1">
+          <button class="faq-q"><span data-i18n="faq.q7">What's your cancellation policy?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a7">Starter: No minimum commitment, cancel anytime. Professional & Premium: 30-day written notice required. VIP: Must complete the 6-month initial commitment; then month-to-month with 30-day notice.</p></div>
+        </div>
+
+        <div class="faq-item animate-on-scroll delay-2">
+          <button class="faq-q"><span data-i18n="faq.q8">How many posts per week can I expect?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a8">Starter: ~1/week. Professional: 2/week. Premium: 3/week. VIP: 4/week. Each plan also includes reels every week on top of regular posts — ensuring consistent, high-quality presence across all platforms.</p></div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
-  <section id="contact">
+  <!-- ===== FINAL CTA ===== -->
+  <section id="contact" class="section cta-section">
     <div class="container">
-      <div class="contact-wrapper">
-        <div class="contact-info">
-          <span class="section-tag" data-i18n="contact.tag">Let's Talk</span>
-          <h2 data-i18n="contact.h2">Ready to Fill Your Chairs with Video?</h2>
-          <p data-i18n="contact.sub">Book a free 30-minute strategy call and we'll show you exactly what we'd do for your practice — no pressure, no obligation.</p>
-          <a href="https://calendly.com/dentalvid/strategy-call" target="_blank" class="btn btn-primary btn-lg" data-i18n="contact.calendlyCta">
-            🗓 Schedule Free Strategy Call
-          </a>
-          <div class="contact-details">
-            <div class="contact-item">
-              <span>📧</span>
-              <a href="mailto:hello@dentalvid.com">hello@dentalvid.com</a>
-            </div>
-            <div class="contact-item">
-              <span>📞</span>
-              <a href="tel:+18005551234">(800) 555-1234</a>
-            </div>
-            <div class="contact-item">
-              <span>🕐</span>
-              <span data-i18n="contact.hours">Mon–Fri, 9am–6pm EST</span>
-            </div>
-          </div>
+      <div class="cta-header">
+        <h2 data-i18n="cta.h2">Ready to Attract More Patients?</h2>
+        <p data-i18n="cta.sub">Join 50+ clinics generating more inquiries with professional social media &amp; ads management</p>
+      </div>
+      <div class="cta-two-cols">
+        <div class="cta-col cta-col-blue">
+          <div class="cta-col-icon">📅</div>
+          <h3 data-i18n="cta.c1.title">Schedule Free Consultation</h3>
+          <p data-i18n="cta.c1.sub">15-min call with Benjamin to discuss your clinic's goals — no pitch, just strategy.</p>
+          <button class="btn btn-white btn-lg open-cal" data-i18n="cta.c1.btn">Book Now →</button>
         </div>
-        <div class="contact-form-wrapper">
-          <form class="contact-form" id="contactForm">
-            <h3 data-i18n="contact.formTitle">Send Us a Message</h3>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name" data-i18n="contact.labelName">Your Name *</label>
-                <input type="text" id="name" name="name" placeholder="Dr. Jane Smith" required data-i18n-ph="contact.phName" />
-              </div>
-              <div class="form-group">
-                <label for="email" data-i18n="contact.labelEmail">Email Address *</label>
-                <input type="email" id="email" name="email" placeholder="jane@yourpractice.com" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="phone" data-i18n="contact.labelPhone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
-              </div>
-              <div class="form-group">
-                <label for="plan" data-i18n="contact.labelPlan">Interested In</label>
-                <select id="plan" name="plan">
-                  <option value="" data-i18n="contact.planDefault">Select a plan...</option>
-                  <option value="starter">Starter — $1,500/mo</option>
-                  <option value="pro">Pro — $2,500/mo</option>
-                  <option value="premium">Premium — $4,000/mo</option>
-                  <option value="vip">VIP — $6,000/mo</option>
-                  <option value="unsure" data-i18n="contact.planUnsure">Not sure yet</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="message" data-i18n="contact.labelMsg">Tell Us About Your Practice</label>
-              <textarea id="message" name="message" rows="4" placeholder="Location, number of dentists, biggest challenge attracting patients..." data-i18n-ph="contact.phMsg"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-full btn-lg" data-i18n="contact.submit">
-              Send Message →
-            </button>
-            <p class="form-note" data-i18n="contact.formNote">We respond within 24 business hours. Your info is never shared.</p>
-          </form>
-          <div class="form-success" id="formSuccess" style="display:none">
-            <div class="success-icon">✅</div>
-            <h3 data-i18n="contact.successTitle">Message Received!</h3>
-            <p data-i18n="contact.successSub">We'll be in touch within 24 hours. In the meantime, book your free strategy call below.</p>
-            <a href="https://calendly.com/dentalvid/strategy-call" target="_blank" class="btn btn-primary" data-i18n="contact.successCta">Book Strategy Call</a>
-          </div>
+        <div class="cta-col cta-col-green">
+          <div class="cta-col-icon">📄</div>
+          <h3 data-i18n="cta.c2.title">Download Our Free Guide</h3>
+          <p data-i18n="cta.c2.sub">"How to Attract Patients with Video Marketing" — Practical PDF for dental clinics.</p>
+          <a href="#" class="btn btn-white-outline btn-lg" data-i18n="cta.c2.btn">Get Free PDF →</a>
+        </div>
+      </div>
+      <div class="contact-direct">
+        <div class="contact-item-row">
+          <a href="mailto:hello@benjamintapia.com">📧 hello@benjamintapia.com</a>
+          <a href="tel:+13055551234">📞 +1 (305) 555-1234</a>
+          <a href="https://wa.me/13055551234" target="_blank">💬 WhatsApp</a>
         </div>
       </div>
     </div>
@@ -579,48 +724,49 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="#" class="logo">
-            <span class="logo-icon">▶</span>
-            Dental<span class="logo-accent">Vid</span>
-          </a>
-          <p data-i18n="footer.brand">The only video marketing agency built exclusively for dental practices. We know your patients, your procedures, and what makes them book.</p>
-          <div class="social-links">
+          <div class="footer-logo">Benjamin <span class="accent">Tapia</span></div>
+          <p data-i18n="footer.brand">Social Media &amp; Ads Management for Dental &amp; Aesthetic Clinics across the USA. Growing practices, one reel at a time.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="LinkedIn">in</a>
             <a href="#" aria-label="Instagram">📸</a>
-            <a href="#" aria-label="Facebook">👤</a>
-            <a href="#" aria-label="YouTube">▶</a>
-            <a href="#" aria-label="TikTok">🎵</a>
+            <a href="#" aria-label="Facebook">f</a>
           </div>
         </div>
-        <div class="footer-links">
-          <h4 data-i18n="footer.services">Services</h4>
+        <div class="footer-col">
+          <h4 data-i18n="footer.h1">Quick Links</h4>
           <ul>
-            <li><a href="#packages" data-i18n="footer.starter">Starter Plan</a></li>
-            <li><a href="#packages" data-i18n="footer.pro">Pro Plan</a></li>
-            <li><a href="#packages" data-i18n="footer.premium">Premium Plan</a></li>
-            <li><a href="#packages" data-i18n="footer.vip">VIP Plan</a></li>
+            <li><a href="#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#process" data-i18n="nav.process">Process</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="#" data-i18n="footer.terms">Terms of Service</a></li>
           </ul>
         </div>
-        <div class="footer-links">
-          <h4 data-i18n="footer.company">Company</h4>
+        <div class="footer-col">
+          <h4 data-i18n="footer.h2">Contact</h4>
           <ul>
-            <li><a href="#how-it-works" data-i18n="nav.hiw">How It Works</a></li>
-            <li><a href="#testimonials" data-i18n="footer.cases">Case Studies</a></li>
-            <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="mailto:hello@benjamintapia.com">📧 hello@benjamintapia.com</a></li>
+            <li><a href="tel:+13055551234">📞 +1 (305) 555-1234</a></li>
+            <li><a href="https://wa.me/13055551234" target="_blank">💬 WhatsApp</a></li>
           </ul>
         </div>
-        <div class="footer-links">
-          <h4 data-i18n="footer.contact">Contact</h4>
-          <ul>
-            <li><a href="mailto:hello@dentalvid.com">hello@dentalvid.com</a></li>
-            <li><a href="tel:+18005551234">(800) 555-1234</a></li>
-            <li><a href="https://calendly.com/dentalvid/strategy-call" target="_blank" data-i18n="nav.cta">Book a Call</a></li>
-          </ul>
+        <div class="footer-col">
+          <h4 data-i18n="footer.h3">Newsletter</h4>
+          <p data-i18n="footer.newsub">Get free marketing tips for dental clinics.</p>
+          <form class="footer-form" id="newsletterForm">
+            <input type="email" placeholder="your@email.com" required data-i18n-ph="footer.ph" />
+            <button type="submit" class="btn btn-green" data-i18n="footer.subscribe">Subscribe</button>
+          </form>
         </div>
       </div>
       <div class="footer-bottom">
-        <p data-i18n="footer.copy">© 2025 DentalVid. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-        <p class="footer-disclaimer" data-i18n="footer.disclaimer">Results may vary. Metrics shown are based on actual client performance and are not guaranteed.</p>
+        <p data-i18n="footer.copy">© 2025 Benjamin Tapia. All rights reserved.</p>
+        <div class="footer-lang">
+          <button class="lang-toggle-btn active" data-lang="en">EN</button>
+          <span>|</span>
+          <button class="lang-toggle-btn" data-lang="es">ES</button>
+        </div>
       </div>
     </div>
   </footer>

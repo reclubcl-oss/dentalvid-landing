@@ -1,429 +1,383 @@
 // ===== TRANSLATIONS =====
-const translations = {
+const T = {
   en: {
-    // Navbar
-    'nav.hiw': 'How It Works',
-    'nav.packages': 'Packages',
-    'nav.results': 'Results',
-    'nav.portfolio': 'Portfolio',
-    'nav.cta': 'Book a Call',
-    // Hero
-    'hero.badge': '🎯 #1 Video Marketing Agency for Dental Clinics',
-    'hero.h1': 'Turn Your Dental Practice Into a<br /><span class="gradient-text">Patient-Attracting Machine</span>',
-    'hero.sub': 'Professional video marketing that builds trust, fills your chair, and grows your revenue — without you lifting a finger.',
-    'hero.cta1': '🗓 Book Free Strategy Call',
-    'hero.cta2': 'View Packages →',
-    'hero.stat1': 'Clinics Served',
-    'hero.stat2': 'Views Generated',
-    'hero.stat3': 'Avg. ROI in 90 days',
-    'hero.videoLabel': 'See a sample reel',
-    // Logos
-    'logos.label': 'Trusted by practices across the USA',
-    // How It Works
-    'hiw.tag': 'The Process',
-    'hiw.h2': 'From Zero to Full Calendar in 5 Simple Steps',
-    'hiw.sub': 'We handle everything — strategy, filming, editing, and distribution. You just show up.',
-    'hiw.s1.title': 'Discovery Call',
-    'hiw.s1.body': 'We analyze your practice, competitors, and target patients to craft a tailored video strategy that resonates in your local market.',
-    'hiw.s2.title': 'Custom Strategy',
-    'hiw.s2.body': 'Our team builds a full content calendar — video scripts, posting schedule, and platform targeting — designed to attract your ideal patient.',
-    'hiw.s3.title': 'Professional Production',
-    'hiw.s3.body': 'Cinematic-quality filming at your clinic (or remote production for digital content), edited with motion graphics, captions, and hooks that stop the scroll.',
-    'hiw.s4.title': 'Multi-Platform Launch',
-    'hiw.s4.body': 'We publish and optimize your videos across Instagram, Facebook, YouTube, TikTok, and Google — maximizing reach without you touching a single app.',
-    'hiw.s5.title': 'Track & Scale',
-    'hiw.s5.body': 'Monthly performance reports with real metrics — views, leads, booked appointments — and ongoing optimization to keep growth compounding.',
-    // Packages
-    'pkg.tag': 'Pricing',
-    'pkg.h2': 'Choose the Plan That Fills Your Chairs',
-    'pkg.sub': 'Transparent pricing. No hidden fees. Cancel anytime after 90 days.',
-    'pkg.popularBadge': '⭐ Most Common',
-    'pkg.getStarted': 'Get Started',
-    // Starter
-    'pkg.starter.tier': 'Starter',
-    'pkg.starter.tagline': 'Perfect for practices taking their first steps on social media',
-    'pkg.starter.f1': '✅ 4 posts/month',
-    'pkg.starter.f2': '✅ Basic community management',
-    'pkg.starter.f3': '✅ 1 monthly report',
-    'pkg.starter.f4': '✅ Email support',
-    'pkg.starter.f5': '❌ Video reels editing',
-    'pkg.starter.f6': '❌ Paid ad management',
-    // Professional
-    'pkg.pro.tier': 'Professional',
-    'pkg.pro.tagline': 'For growing practices ready to build a real social presence',
-    'pkg.pro.f1': '✅ 8 posts/month (2 per week)',
-    'pkg.pro.f2': '✅ Full community management',
-    'pkg.pro.f3': '✅ Comment & DM replies',
-    'pkg.pro.f4': '✅ 2 monthly reports',
-    'pkg.pro.f5': '✅ Engagement analysis',
-    'pkg.pro.f6': '✅ Email + chat support',
-    'pkg.pro.f7': '❌ Video reels editing',
-    'pkg.pro.f8': '❌ Paid ad management',
-    // Elite
-    'pkg.premium.tier': 'Elite',
-    'pkg.premium.tagline': 'Full content creation + 24/7 community management',
-    'pkg.premium.f1': '✅ 12–16 posts/month (3–4/week)',
-    'pkg.premium.f2': '✅ Professional content creation',
-    'pkg.premium.f3': '✅ Video reels editing (2–4/month)',
-    'pkg.premium.f4': '✅ 24/7 community management',
-    'pkg.premium.f5': '✅ Influencer outreach',
-    'pkg.premium.f6': '✅ 4 detailed monthly reports',
-    'pkg.premium.f7': '✅ Strategy consultation (1×/month)',
-    'pkg.premium.f8': '❌ Paid ad management',
-    // VIP
-    'pkg.vip.badge': '⭐⭐ Full Management',
-    'pkg.vip.tier': 'VIP',
-    'pkg.vip.tagline': 'White-glove full management for ambitious multi-location practices',
-    'pkg.vip.f1': '✅ 20+ posts/month',
-    'pkg.vip.f2': '✅ Unlimited reels',
-    'pkg.vip.f3': '✅ Paid ads management ⭐',
-    'pkg.vip.f4': '✅ Full community management',
-    'pkg.vip.f5': '✅ Brand strategy',
-    'pkg.vip.f6': '✅ Monthly consultation',
-    'pkg.vip.f7': '✅ Competitive analysis',
-    // Enterprise
-    'pkg.enterprise.badge': '⭐⭐⭐ Top Tier',
-    'pkg.enterprise.tier': 'Enterprise',
-    'pkg.enterprise.tagline': 'The complete growth engine for top dental practices',
-    'pkg.enterprise.f1': '✅ Unlimited posts & reels',
-    'pkg.enterprise.f2': '✅ Paid ads management + budget',
-    'pkg.enterprise.f3': '✅ Full brand & content strategy',
-    'pkg.enterprise.f4': '✅ 24/7 community management',
-    'pkg.enterprise.f5': '✅ Weekly strategy sessions',
-    'pkg.enterprise.f6': '✅ Influencer + PR outreach',
-    'pkg.enterprise.f7': '✅ Multi-location coverage',
-    'pkg.note': '💡 Not sure which plan fits? <a href="#contact">Let\'s chat</a> — we\'ll recommend the right fit for your practice size and goals.',
-    // Testimonials
-    'testi.tag': 'Social Proof',
-    'testi.h2': 'Real Dentists. Real Results.',
-    'testi.sub': 'Don\'t take our word for it — hear from practices just like yours.',
-    'testi.t1.quote': '"We went from 12 new patients a month to 47 in just 90 days. The videos DentalVid created made us look like a top-tier practice — patients told us they chose us specifically because of our Instagram videos."',
-    'testi.t1.result': '📈 +292% new patients in 90 days',
-    'testi.t2.quote': '"I was skeptical at first — I thought video marketing was only for big brands. But within 6 weeks we had 18K views on a single Invisalign video and our bookings for clear aligners tripled. Best investment I\'ve made."',
-    'testi.t2.result': '📈 3× Invisalign bookings in 6 weeks',
-    'testi.t3.quote': '"I run 3 locations and DentalVid handles everything across all of them. One team, consistent brand, incredible results. Our Google reviews went from 3.8 to 4.9 stars because video helped build patient trust before they even walked in."',
-    'testi.t3.result': '📈 3.8 → 4.9 Google rating | 3 locations',
-    // Portfolio
-    'port.tag': 'Portfolio',
-    'port.h2': 'Before & After: Our Work in Action',
-    'port.sub': 'See the transformation we create — from bland to brand.',
-    'port.before': 'BEFORE',
-    'port.after': 'AFTER',
-    'port.p1.before': 'Zero social presence, only stock photos, 89 followers',
-    'port.p1.after': 'Cinematic reels, authentic team videos, 4.2K followers',
-    'port.p2.before': 'Outdated website video, no TikTok, low Invisalign bookings',
-    'port.p2.after': 'Viral before/after reels, 18K views, trending locally',
-    'port.p3.before': '3.8-star rating, inconsistent branding across 3 locations',
-    'port.p3.badMetric': 'Low trust score',
-    'port.p3.after': 'Unified brand story, patient video testimonials, top-3 local SEO',
-    // FAQ
-    'faq.h2': 'Got Questions? We\'ve Got Answers.',
-    'faq.q1': 'Do you film at my clinic or can we do it remotely?',
-    'faq.a1': 'Both! For local clients, we can send a professional videographer to your clinic. For remote clients, we create high-quality content using screen recordings, supplied footage, animation, and AI-enhanced production. We\'ve worked with practices in all 50 states without ever needing to visit in person.',
-    'faq.q2': 'How long before I see results?',
-    'faq.a2': 'Most clients start seeing increased profile visits and DMs within 2–3 weeks. Measurable new patient bookings from video typically appear in weeks 4–8. By month 3, the majority of our clients see a 2–4× return on their investment. Results vary by market and starting point.',
-    'faq.q3': 'I\'m not tech-savvy at all. Will I need to manage anything?',
-    'faq.a3': 'Absolutely not. We handle 100% of the production, editing, scheduling, and posting. You simply review videos before they go live (or approve with auto-publishing enabled). Most of our clients spend less than 15 minutes per month on their video marketing once we\'re set up.',
-    'faq.q4': 'What makes dental video marketing different from regular social media management?',
-    'faq.a4': 'Generic social media agencies post photos and write captions. We specialize exclusively in dental video — we know which procedures convert (implants, Invisalign, whitening), what patients are searching for, and how to build the trust that turns a viewer into a booked appointment. Our team has dental-specific scriptwriters, editors who understand HIPAA compliance, and strategists who know your market.',
-    'faq.q5': 'Is there a contract? Can I cancel?',
-    'faq.a5': 'We require a 90-day initial commitment so we can properly execute the strategy and show real results. After that, it\'s month-to-month with 30-day cancellation notice. We\'re confident you\'ll want to stay — but we never lock you in beyond that first quarter.',
-    // Contact
-    'contact.tag': 'Let\'s Talk',
-    'contact.h2': 'Ready to Fill Your Chairs with Video?',
-    'contact.sub': 'Book a free 30-minute strategy call and we\'ll show you exactly what we\'d do for your practice — no pressure, no obligation.',
-    'contact.calendlyCta': '🗓 Schedule Free Strategy Call',
-    'contact.hours': 'Mon–Fri, 9am–6pm EST',
-    'contact.formTitle': 'Send Us a Message',
-    'contact.labelName': 'Your Name *',
-    'contact.phName': 'Dr. Jane Smith',
-    'contact.labelEmail': 'Email Address *',
-    'contact.labelPhone': 'Phone Number',
-    'contact.labelPlan': 'Interested In',
-    'contact.planDefault': 'Select a plan...',
-    'contact.planUnsure': 'Not sure yet',
-    'contact.labelMsg': 'Tell Us About Your Practice',
-    'contact.phMsg': 'Location, number of dentists, biggest challenge attracting patients...',
-    'contact.submit': 'Send Message →',
-    'contact.formNote': 'We respond within 24 business hours. Your info is never shared.',
-    'contact.successTitle': 'Message Received!',
-    'contact.successSub': 'We\'ll be in touch within 24 hours. In the meantime, book your free strategy call below.',
-    'contact.successCta': 'Book Strategy Call',
-    // Footer
-    'footer.brand': 'The only video marketing agency built exclusively for dental practices. We know your patients, your procedures, and what makes them book.',
-    'footer.services': 'Services',
-    'footer.starter': 'Starter Plan',
-    'footer.pro': 'Pro Plan',
-    'footer.premium': 'Premium Plan',
-    'footer.vip': 'VIP Plan',
-    'footer.company': 'Company',
-    'footer.cases': 'Case Studies',
-    'footer.contact': 'Contact',
-    'footer.copy': '© 2025 DentalVid. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>',
-    'footer.disclaimer': 'Results may vary. Metrics shown are based on actual client performance and are not guaranteed.',
+    'cal.title':       'Book Your Free 15-Min Consultation',
+    'cal.sub':         'Schedule a call with Benjamin to discuss your clinic\'s goals.',
+    'cal.placeholder': 'Click below to open Calendly',
+    'cal.open':        'Open Calendly →',
+    'nav.logoSub':     'Social Media & Ads',
+    'nav.home':        'Home',
+    'nav.services':    'Services',
+    'nav.process':     'Process',
+    'nav.testimonials':'Testimonials',
+    'nav.contact':     'Contact',
+    'nav.cta':         'Book Consultation',
+    'hero.badge':      '🦷 Dental & Aesthetic Clinics — USA',
+    'hero.h1':         'Attract More Patients with Professional Social Media &amp; Paid Ads',
+    'hero.sub':        'Increase inquiries by 25-30% in 30 days | Join 50+ clinics across the USA',
+    'hero.cta1':       'Start Free Consultation',
+    'hero.cta2':       'View Our Results',
+    'hero.trust':      'Trusted by 50+ clinics in Florida, Texas, California & more',
+    'hero.card1t':     '+32% Inquiries',
+    'hero.card1s':     'Smile Center, FL',
+    'hero.card2t':     '3.8× ROAS',
+    'hero.card2s':     'Premier Dental, TX',
+    'hero.card3t':     'Results in 14 days',
+    'hero.card3s':     'EliteSmile, CA',
+    'hero.igCaption':  'Transform your smile ✨ Book now!',
+    'hero.scroll':     'Scroll to explore',
+    'trust.label':     'Trusted by clinics across the USA',
+    'prob.tag':        'The Problem',
+    'prob.h2':         'Why Most Clinics Struggle to Get Patients Online',
+    'prob.c1.title':   'Photos Aren\'t Enough',
+    'prob.c1.body':    'Most clinics rely on photos and text. Patients scroll past without stopping, and you lose potential bookings every day.',
+    'prob.c2.title':   'Videos Convert',
+    'prob.c2.body':    'Professional videos show emotion, transformation, and build the trust that turns a stranger into a booked patient.',
+    'prob.c3.title':   'We Create It All',
+    'prob.c3.body':    'High-quality posts, reels, ad campaigns, and optimization — all done for you. You focus on patients, we handle growth.',
+    'stats.s1':        'Average Patient Inquiry Increase',
+    'stats.s2':        'Days Average Time to ROI',
+    'stats.s3':        'Clinics We\'ve Helped',
+    'stats.s4':        'Client Satisfaction Rate',
+    'pkg.tag':         'Pricing & Services',
+    'pkg.h2':          'Choose the Plan That Grows Your Clinic',
+    'pkg.sub':         'Transparent pricing. No hidden fees. Ads budget paid directly to platforms.',
+    'pkg.s.name':      'STARTER',   'pkg.s.desc': 'For clinics just starting',
+    'pkg.s.f1':'✅ 4 posts/month',  'pkg.s.f2':'✅ 2 reels/month',
+    'pkg.s.f3':'✅ Basic community management', 'pkg.s.f4':'✅ Comments response <24h',
+    'pkg.s.f5':'✅ 1 monthly report','pkg.s.f6':'✅ Email support',
+    'pkg.s.f7':'❌ Paid ads management','pkg.s.f8':'❌ Video testimonials',
+    'pkg.s.platforms':'📱 Instagram + Facebook','pkg.s.contract':'⏱ 1 month minimum',
+    'pkg.s.cta':'Get Started','pkg.s.note':'Budget ads: Not included',
+    'pkg.p.ribbon':'MOST POPULAR','pkg.p.name':'PROFESSIONAL','pkg.p.desc':'For growing clinics',
+    'pkg.p.f1':'✅ 8 posts/month (2 per week)','pkg.p.f2':'✅ 4 reels/month (30–45 sec)',
+    'pkg.p.f3':'✅ Complete community management','pkg.p.f4':'✅ Comments/DMs response <4h',
+    'pkg.p.f5':'✅ Engagement analysis','pkg.p.f6':'✅ 2 monthly detailed reports',
+    'pkg.p.f7':'✅ Email + chat support','pkg.p.f8':'✅ Ads setup & monitoring included',
+    'pkg.p.platforms':'📱 Instagram + Facebook + TikTok',
+    'pkg.p.ads':'💰 Ads budget: $500–1,000/mo (client pays platform)',
+    'pkg.p.contract':'⏱ 3 months minimum','pkg.p.cta':'Start Now','pkg.p.note':'⭐ Most popular option',
+    'pkg.pr.name':'PREMIUM','pkg.pr.desc':'For serious growth',
+    'pkg.pr.f1':'✅ 12 posts/month (3 per week)','pkg.pr.f2':'✅ 8 reels/month (60 sec)',
+    'pkg.pr.f3':'✅ 1 advanced carousel/month','pkg.pr.f4':'✅ Professional content creation',
+    'pkg.pr.f5':'✅ 24/7 community management','pkg.pr.f6':'✅ Comments/DMs response <2h',
+    'pkg.pr.f7':'✅ 4 monthly detailed reports','pkg.pr.f8':'✅ Strategy consultation 1×/month',
+    'pkg.pr.f9':'✅ Advanced ads management','pkg.pr.f10':'✅ A/B testing & optimization',
+    'pkg.pr.f11':'✅ Landing page optimization','pkg.pr.f12':'✅ Weekly ROAS reports',
+    'pkg.pr.platforms':'📱 Instagram + Facebook + TikTok + Google Ads',
+    'pkg.pr.ads':'💰 Ads budget: $1,000–2,000/mo (client pays platform)',
+    'pkg.pr.contract':'⏱ 3 months minimum','pkg.pr.cta':'Get Premium','pkg.pr.note':'Best for growing clinics',
+    'pkg.v.name':'VIP','pkg.v.desc':'For premium clinics',
+    'pkg.v.f1':'✅ 16+ posts/month (4 per week)','pkg.v.f2':'✅ 12 reels/month (90+ sec, high-production)',
+    'pkg.v.f3':'✅ 2 advanced carousels/month','pkg.v.f4':'✅ 2 professional video testimonials/month',
+    'pkg.v.f5':'✅ Professional content creation','pkg.v.f6':'✅ 24/7 premium community management',
+    'pkg.v.f7':'✅ DMs response <30 minutes','pkg.v.f8':'✅ 4 reports + daily analytics',
+    'pkg.v.f9':'✅ 2 strategy consultations/month','pkg.v.f10':'✅ Advanced ads (FB, IG, Google, TikTok)',
+    'pkg.v.f11':'✅ A/B testing exhaustive','pkg.v.f12':'✅ Landing page creation & optimization',
+    'pkg.v.f13':'✅ Daily ROAS reports','pkg.v.f14':'✅ Monthly competitive analysis',
+    'pkg.v.f15':'✅ Priority 24/7 phone support',
+    'pkg.v.platforms':'📱 Instagram + Facebook + TikTok + Google + LinkedIn',
+    'pkg.v.ads':'💰 Ads budget: $2,000–3,500/mo (client pays platform)',
+    'pkg.v.contract':'⏱ 6 months minimum','pkg.v.cta':'Go VIP','pkg.v.note':'🏆 Most comprehensive package',
+    'pkg.bottomNote':'💡 Not sure which plan is right for you?',
+    'pkg.chat':'Book a free 15-min call',
+    'cmp.tag':'Comparison','cmp.h2':'Compare All Plans Side by Side',
+    'cmp.feature':'Feature','cmp.starter':'Starter','cmp.pro':'Professional',
+    'cmp.premium':'Premium','cmp.vip':'VIP',
+    'cmp.r1':'Posts/month','cmp.r2':'Reels/month','cmp.r3':'Carousels/month',
+    'cmp.r4':'Video testimonials','cmp.r5':'Community management',
+    'cmp.r6':'Monthly reports','cmp.r7':'Ads management','cmp.r8':'Landing pages',
+    'cmp.r9':'Google Ads','cmp.r10':'TikTok Ads','cmp.r11':'Strategy consultations','cmp.r12':'Support',
+    'cmp.basic':'Basic','cmp.complete':'Complete','cmp.full247':'24/7','cmp.premium247':'24/7 Premium',
+    'cmp.daily':'4 + Daily','cmp.optimization':'Optimization','cmp.creation':'Creation + Opt.',
+    'cmp.monthly':'1×/month','cmp.bimonthly':'2×/month','cmp.phone247':'24/7 Phone',
+    'proc.tag':'How It Works','proc.h2':'From First Call to Full Calendar — 5 Simple Steps',
+    'proc.sub':'We handle everything. You focus on treating patients.',
+    'proc.s1.t':'Book a Call','proc.s1.b':'Schedule your free 15-min consultation with Benjamin to discuss your clinic\'s goals and current challenges.',
+    'proc.s2.t':'Strategy Session','proc.s2.b':'We analyze your clinic, target audience, competitors, and goals to create a custom social media & ads strategy.',
+    'proc.s3.t':'Content Creation','proc.s3.b':'We create professional posts, reels, carousels, and ad creatives tailored to your clinic\'s brand and patient demographics.',
+    'proc.s4.t':'Launch & Optimize','proc.s4.b':'We publish content on schedule and launch optimized paid ad campaigns that target patients actively searching for your services.',
+    'proc.s5.t':'Track Results','proc.s5.b':'Monthly reports with clear metrics — patient inquiries, ROAS, engagement, and growth — so you always know your ROI.',
+    'port.tag':'Case Studies','port.h2':'Before & After: Real Results',
+    'port.sub':'See the exact transformations we\'ve delivered for clinics like yours.',
+    'port.before':'BEFORE','port.after':'AFTER',
+    'port.c1.before':'No social presence, stock photos only, 120 followers',
+    'port.c1.after':'Professional reels, targeted ads, 3.2K followers',
+    'port.c1.quote':'"Benjamin increased our patient inquiries by 32% in just 6 weeks. Incredible ROI."',
+    'port.c2.before':'Inconsistent posting, low engagement, no paid ads',
+    'port.c2.after':'Consistent reels, 3.8× ROAS on Google Ads, 8.7K followers',
+    'port.c2.quote':'"Our Google Ads now run at 3.8× ROAS. Best marketing investment we\'ve made."',
+    'port.c3.before':'Generic content, no video, 3.6 Google rating',
+    'port.c3.after':'Video testimonials, trust-building content, viral reels',
+    'port.c3.quote':'"Our Google rating went from 3.6 to 4.9 stars. Video testimonials changed everything."',
+    'port.c4.before':'Wasting $800/mo on ads with no strategy, zero conversions',
+    'port.c4.after':'Optimized ad campaigns, landing page, A/B testing',
+    'port.c4.quote':'"We went from wasting ad spend to a 4.2% conversion rate in under 45 days."',
+    'testi.tag':'Testimonials','testi.h2':'What Our Clients Say','testi.sub':'Real doctors. Real clinics. Real results.',
+    'testi.t1.q':'"Benjamin increased our patient inquiries by 32% in just 6 weeks. His strategy was clear, communication was excellent, and the results speak for themselves. Highly recommend to any dental practice."',
+    'testi.t1.r':'📈 +32% inquiries · 6 weeks',
+    'testi.t2.q':'"I was skeptical about paid ads, but Benjamin showed us exactly where every dollar went. Our Google Ads are running at 3.8× ROAS and our Invisalign bookings tripled. Outstanding."',
+    'testi.t2.r':'📈 3.8× ROAS · Invisalign ×3',
+    'testi.t3.q':'"The video testimonials Benjamin created for us changed everything. Our Google rating went from 3.6 to 4.9 stars, and new patients specifically mention seeing our content before booking."',
+    'testi.t3.r':'📈 3.6 → 4.9 Google · 60 days',
+    'testi.t4.q':'"We were wasting $800/month on ads that got zero results. Benjamin restructured everything — new landing page, A/B testing, proper targeting. Now we have a 4.2% conversion rate."',
+    'testi.t4.r':'📈 0.4% → 4.2% conversion · 45 days',
+    'faq.h2':'Frequently Asked Questions',
+    'faq.q1':'How long does it take to see results?',
+    'faq.a1':'Most clinics see an increase in patient inquiries within 30 days of launching content and ads. Some see results in as little as 2 weeks, especially with paid campaigns running from day one.',
+    'faq.q2':'Do you offer revisions?',
+    'faq.a2':'Yes! Professional and Premium packages include 2–3 revisions per piece of content per month. The VIP package includes unlimited revisions to ensure everything is exactly right.',
+    'faq.q3':'What if I don\'t like the content?',
+    'faq.a3':'We offer a 14-day satisfaction guarantee. If you\'re not satisfied with our work during the first 14 days, we\'ll revise everything or offer a full refund — no questions asked.',
+    'faq.q4':'Can I see examples first?',
+    'faq.a4':'Absolutely! We have a full portfolio of before & after examples, case studies, and sample content. Book a free 15-min call and we\'ll walk you through everything specific to your specialty.',
+    'faq.q5':'Do I pay for ads separately?',
+    'faq.a5':'Yes. The ads budget (Facebook, Instagram, Google, TikTok) is paid directly by you to the platforms. Our management fee covers strategy, creation, setup, optimization, and reporting — not the ad spend itself.',
+    'faq.q6':'Do you work with other specialties?',
+    'faq.a6':'Our primary focus is dental and aesthetic clinics, but we also work with dermatology, orthopedics, medical spas, and other healthcare practices in the USA.',
+    'faq.q7':'What\'s your cancellation policy?',
+    'faq.a7':'Starter: No minimum commitment, cancel anytime. Professional & Premium: 30-day written notice required. VIP: Must complete the 6-month initial commitment; then month-to-month with 30-day notice.',
+    'faq.q8':'How many posts per week can I expect?',
+    'faq.a8':'Starter: ~1/week. Professional: 2/week. Premium: 3/week. VIP: 4/week. Each plan also includes reels every week on top of regular posts — ensuring consistent, high-quality presence across all platforms.',
+    'cta.h2':'Ready to Attract More Patients?',
+    'cta.sub':'Join 50+ clinics generating more inquiries with professional social media &amp; ads management',
+    'cta.c1.title':'Schedule Free Consultation','cta.c1.sub':'15-min call with Benjamin to discuss your clinic\'s goals — no pitch, just strategy.','cta.c1.btn':'Book Now →',
+    'cta.c2.title':'Download Our Free Guide','cta.c2.sub':'"How to Attract Patients with Video Marketing" — Practical PDF for dental clinics.','cta.c2.btn':'Get Free PDF →',
+    'footer.brand':'Social Media & Ads Management for Dental & Aesthetic Clinics across the USA. Growing practices, one reel at a time.',
+    'footer.h1':'Quick Links','footer.h2':'Contact','footer.h3':'Newsletter',
+    'footer.newsub':'Get free marketing tips for dental clinics.',
+    'footer.ph':'your@email.com','footer.subscribe':'Subscribe',
+    'footer.privacy':'Privacy Policy','footer.terms':'Terms of Service',
+    'footer.copy':'© 2025 Benjamin Tapia. All rights reserved.',
   },
 
   es: {
-    // Navbar
-    'nav.hiw': 'Cómo Funciona',
-    'nav.packages': 'Paquetes',
-    'nav.results': 'Resultados',
-    'nav.portfolio': 'Portafolio',
-    'nav.cta': 'Agendar Llamada',
-    // Hero
-    'hero.badge': '🎯 Agencia #1 de Video Marketing para Clínicas Dentales',
-    'hero.h1': 'Convierte Tu Clínica Dental en una<br /><span class="gradient-text">Máquina de Atraer Pacientes</span>',
-    'hero.sub': 'Video marketing profesional que genera confianza, llena tu agenda y hace crecer tus ingresos — sin que muevas un dedo.',
-    'hero.cta1': '🗓 Agendar Llamada Gratis',
-    'hero.cta2': 'Ver Paquetes →',
-    'hero.stat1': 'Clínicas Atendidas',
-    'hero.stat2': 'Vistas Generadas',
-    'hero.stat3': 'ROI Promedio en 90 días',
-    'hero.videoLabel': 'Ver una muestra de reel',
-    // Logos
-    'logos.label': 'Con la confianza de clínicas en todo EE. UU.',
-    // How It Works
-    'hiw.tag': 'El Proceso',
-    'hiw.h2': 'De Cero a Agenda Llena en 5 Pasos Simples',
-    'hiw.sub': 'Nosotros manejamos todo — estrategia, filmación, edición y distribución. Tú solo apareces.',
-    'hiw.s1.title': 'Llamada de Descubrimiento',
-    'hiw.s1.body': 'Analizamos tu práctica, competidores y pacientes objetivo para crear una estrategia de video personalizada que resuene en tu mercado local.',
-    'hiw.s2.title': 'Estrategia Personalizada',
-    'hiw.s2.body': 'Nuestro equipo construye un calendario de contenido completo — guiones de video, programa de publicación y segmentación por plataforma — diseñado para atraer a tu paciente ideal.',
-    'hiw.s3.title': 'Producción Profesional',
-    'hiw.s3.body': 'Filmación de calidad cinematográfica en tu clínica (o producción remota para contenido digital), editada con gráficos animados, subtítulos y hooks que detienen el scroll.',
-    'hiw.s4.title': 'Lanzamiento Multiplataforma',
-    'hiw.s4.body': 'Publicamos y optimizamos tus videos en Instagram, Facebook, YouTube, TikTok y Google — maximizando el alcance sin que toques ninguna aplicación.',
-    'hiw.s5.title': 'Seguimiento y Escalado',
-    'hiw.s5.body': 'Informes de rendimiento mensuales con métricas reales — vistas, leads, citas reservadas — y optimización continua para que el crecimiento siga acumulándose.',
-    // Packages
-    'pkg.tag': 'Precios',
-    'pkg.h2': 'Elige el Plan que Llenará Tu Clínica',
-    'pkg.sub': 'Precios transparentes. Sin tarifas ocultas. Cancela en cualquier momento después de 90 días.',
-    'pkg.popularBadge': '⭐ Más Común',
-    'pkg.getStarted': 'Comenzar Ahora',
-    // Starter
-    'pkg.starter.tier': 'Básico',
-    'pkg.starter.tagline': 'Perfecto para clínicas que dan sus primeros pasos en redes sociales',
-    'pkg.starter.f1': '✅ 4 posts/mes',
-    'pkg.starter.f2': '✅ Community management básico',
-    'pkg.starter.f3': '✅ 1 reporte mensual',
-    'pkg.starter.f4': '✅ Soporte por email',
-    'pkg.starter.f5': '❌ Edición de video reels',
-    'pkg.starter.f6': '❌ Gestión de anuncios pagados',
-    // Professional
-    'pkg.pro.tier': 'Estándar',
-    'pkg.pro.tagline': 'Para clínicas en crecimiento listas para construir presencia real',
-    'pkg.pro.f1': '✅ 8 posts/mes (2 por semana)',
-    'pkg.pro.f2': '✅ Community management completo',
-    'pkg.pro.f3': '✅ Responder comentarios y DMs',
-    'pkg.pro.f4': '✅ 2 reportes mensuales',
-    'pkg.pro.f5': '✅ Análisis de engagement',
-    'pkg.pro.f6': '✅ Soporte por email + chat',
-    'pkg.pro.f7': '❌ Edición de video reels',
-    'pkg.pro.f8': '❌ Gestión de anuncios pagados',
-    // Elite
-    'pkg.premium.tier': 'Premium',
-    'pkg.premium.tagline': 'Creación de contenido profesional + community management 24/7',
-    'pkg.premium.f1': '✅ 12–16 posts/mes (3–4/semana)',
-    'pkg.premium.f2': '✅ Creación de contenido profesional',
-    'pkg.premium.f3': '✅ Edición de video reels (2–4/mes)',
-    'pkg.premium.f4': '✅ Community management 24/7',
-    'pkg.premium.f5': '✅ Influencer outreach',
-    'pkg.premium.f6': '✅ 4 reportes mensuales detallados',
-    'pkg.premium.f7': '✅ Consultoría de estrategia (1×/mes)',
-    'pkg.premium.f8': '❌ Gestión de anuncios pagados',
-    // VIP
-    'pkg.vip.badge': '⭐⭐ Full Management',
-    'pkg.vip.tier': 'VIP',
-    'pkg.vip.tagline': 'Gestión completa de primer nivel para clínicas con múltiples sedes',
-    'pkg.vip.f1': '✅ 20+ posts/mes',
-    'pkg.vip.f2': '✅ Reels ilimitados',
-    'pkg.vip.f3': '✅ Gestión de anuncios pagados ⭐',
-    'pkg.vip.f4': '✅ Community management completo',
-    'pkg.vip.f5': '✅ Estrategia de marca',
-    'pkg.vip.f6': '✅ Consultoría mensual',
-    'pkg.vip.f7': '✅ Análisis de competencia',
-    // Enterprise
-    'pkg.enterprise.badge': '⭐⭐⭐ Top Tier',
-    'pkg.enterprise.tier': 'Enterprise',
-    'pkg.enterprise.tagline': 'El motor de crecimiento completo para las mejores clínicas dentales',
-    'pkg.enterprise.f1': '✅ Posts y reels ilimitados',
-    'pkg.enterprise.f2': '✅ Gestión de anuncios pagados + presupuesto',
-    'pkg.enterprise.f3': '✅ Estrategia completa de marca y contenido',
-    'pkg.enterprise.f4': '✅ Community management 24/7',
-    'pkg.enterprise.f5': '✅ Sesiones de estrategia semanales',
-    'pkg.enterprise.f6': '✅ Influencer + relaciones públicas',
-    'pkg.enterprise.f7': '✅ Cobertura para múltiples sedes',
-    'pkg.note': '💡 ¿No sabes cuál plan elegir? <a href="#contact">Hablemos</a> — te recomendaremos el que mejor se adapte al tamaño y objetivos de tu clínica.',
-    // Testimonials
-    'testi.tag': 'Prueba Social',
-    'testi.h2': 'Dentistas Reales. Resultados Reales.',
-    'testi.sub': 'No te quedes con nuestra palabra — escucha a clínicas como la tuya.',
-    'testi.t1.quote': '"Pasamos de 12 pacientes nuevos al mes a 47 en solo 90 días. Los videos que creó DentalVid nos hicieron ver como una clínica de primer nivel — los pacientes nos dijeron que nos eligieron específicamente por nuestros videos de Instagram."',
-    'testi.t1.result': '📈 +292% pacientes nuevos en 90 días',
-    'testi.t2.quote': '"Al principio era escéptico — pensaba que el video marketing era solo para grandes marcas. Pero en 6 semanas tuvimos 18K vistas en un solo video de Invisalign y nuestras reservas de alineadores transparentes se triplicaron. La mejor inversión que he hecho."',
-    'testi.t2.result': '📈 3× reservas de Invisalign en 6 semanas',
-    'testi.t3.quote': '"Tengo 3 sedes y DentalVid lo maneja todo en todas ellas. Un equipo, marca consistente, resultados increíbles. Nuestras reseñas de Google pasaron de 3.8 a 4.9 estrellas porque el video ayudó a generar confianza en los pacientes antes de que entraran."',
-    'testi.t3.result': '📈 3.8 → 4.9 en Google | 3 sedes',
-    // Portfolio
-    'port.tag': 'Portafolio',
-    'port.h2': 'Antes y Después: Nuestro Trabajo en Acción',
-    'port.sub': 'Mira la transformación que creamos — de aburrido a una marca poderosa.',
-    'port.before': 'ANTES',
-    'port.after': 'DESPUÉS',
-    'port.p1.before': 'Sin presencia en redes, solo fotos de stock, 89 seguidores',
-    'port.p1.after': 'Reels cinematográficos, videos auténticos del equipo, 4.2K seguidores',
-    'port.p2.before': 'Video web desactualizado, sin TikTok, pocas reservas de Invisalign',
-    'port.p2.after': 'Reels virales de antes/después, 18K vistas, trending localmente',
-    'port.p3.before': 'Calificación de 3.8 estrellas, marca inconsistente en 3 sedes',
-    'port.p3.badMetric': 'Puntaje de confianza bajo',
-    'port.p3.after': 'Historia de marca unificada, testimoniales en video, top-3 SEO local',
-    // FAQ
-    'faq.h2': '¿Tienes Preguntas? Tenemos Respuestas.',
-    'faq.q1': '¿Filman en mi clínica o pueden hacerlo de forma remota?',
-    'faq.a1': '¡Ambas opciones! Para clientes locales podemos enviar un videógrafo profesional a tu clínica. Para clientes remotos creamos contenido de alta calidad usando grabaciones de pantalla, material suministrado, animación y producción mejorada con IA. Hemos trabajado con clínicas en los 50 estados sin necesidad de visitar en persona.',
-    'faq.q2': '¿Cuánto tiempo tarda en ver resultados?',
-    'faq.a2': 'La mayoría de los clientes comienza a ver un aumento en las visitas al perfil y mensajes directos en 2-3 semanas. Las reservas de nuevos pacientes medibles desde video suelen aparecer en las semanas 4-8. En el mes 3, la mayoría de nuestros clientes ve un retorno de 2-4× su inversión. Los resultados varían según el mercado y punto de partida.',
-    'faq.q3': 'No sé nada de tecnología. ¿Tendré que gestionar algo?',
-    'faq.a3': 'Para nada. Nos encargamos del 100% de la producción, edición, programación y publicación. Solo revisas los videos antes de que se publiquen (o activas la publicación automática). La mayoría de nuestros clientes dedica menos de 15 minutos al mes a su video marketing una vez que estamos configurados.',
-    'faq.q4': '¿En qué se diferencia el video marketing dental del manejo común de redes sociales?',
-    'faq.a4': 'Las agencias genéricas publican fotos y escriben subtítulos. Nosotros nos especializamos exclusivamente en video dental — sabemos qué procedimientos convierten (implantes, Invisalign, blanqueamiento), qué buscan los pacientes y cómo generar la confianza que convierte a un espectador en una cita reservada. Nuestro equipo tiene redactores especializados en odontología, editores que entienden el cumplimiento HIPAA y estrategas que conocen tu mercado.',
-    'faq.q5': '¿Hay contrato? ¿Puedo cancelar?',
-    'faq.a5': 'Requerimos un compromiso inicial de 90 días para ejecutar correctamente la estrategia y mostrar resultados reales. Después de eso, es mes a mes con 30 días de aviso para cancelar. Estamos seguros de que querrás quedarte — pero nunca te encerramos más allá de ese primer trimestre.',
-    // Contact
-    'contact.tag': 'Hablemos',
-    'contact.h2': '¿Listo para Llenar Tu Clínica con Video?',
-    'contact.sub': 'Agenda una llamada de estrategia gratuita de 30 minutos y te mostraremos exactamente qué haríamos por tu clínica — sin presión ni compromiso.',
-    'contact.calendlyCta': '🗓 Agendar Llamada de Estrategia Gratis',
-    'contact.hours': 'Lun–Vie, 9am–6pm EST',
-    'contact.formTitle': 'Envíanos un Mensaje',
-    'contact.labelName': 'Tu Nombre *',
-    'contact.phName': 'Dr. Juan Pérez',
-    'contact.labelEmail': 'Correo Electrónico *',
-    'contact.labelPhone': 'Número de Teléfono',
-    'contact.labelPlan': 'Te Interesa',
-    'contact.planDefault': 'Selecciona un plan...',
-    'contact.planUnsure': 'Aún no estoy seguro',
-    'contact.labelMsg': 'Cuéntanos Sobre Tu Clínica',
-    'contact.phMsg': 'Ubicación, número de dentistas, mayor desafío para atraer pacientes...',
-    'contact.submit': 'Enviar Mensaje →',
-    'contact.formNote': 'Respondemos dentro de 24 horas hábiles. Tu información nunca se comparte.',
-    'contact.successTitle': '¡Mensaje Recibido!',
-    'contact.successSub': 'Nos pondremos en contacto en menos de 24 horas. Mientras tanto, agenda tu llamada de estrategia gratis.',
-    'contact.successCta': 'Agendar Llamada de Estrategia',
-    // Footer
-    'footer.brand': 'La única agencia de video marketing construida exclusivamente para clínicas dentales. Conocemos a tus pacientes, tus procedimientos y qué los hace reservar.',
-    'footer.services': 'Servicios',
-    'footer.starter': 'Plan Starter',
-    'footer.pro': 'Plan Pro',
-    'footer.premium': 'Plan Premium',
-    'footer.vip': 'Plan VIP',
-    'footer.company': 'Empresa',
-    'footer.cases': 'Casos de Éxito',
-    'footer.contact': 'Contacto',
-    'footer.copy': '© 2025 DentalVid. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a>',
-    'footer.disclaimer': 'Los resultados pueden variar. Las métricas mostradas se basan en el rendimiento real de clientes y no están garantizadas.',
+    'cal.title':       'Agenda tu Consulta Gratuita de 15 Min',
+    'cal.sub':         'Habla con Benjamin sobre los objetivos de tu clínica.',
+    'cal.placeholder': 'Haz clic abajo para abrir Calendly',
+    'cal.open':        'Abrir Calendly →',
+    'nav.logoSub':     'Redes Sociales & Ads',
+    'nav.home':        'Inicio',
+    'nav.services':    'Servicios',
+    'nav.process':     'Proceso',
+    'nav.testimonials':'Testimonios',
+    'nav.contact':     'Contacto',
+    'nav.cta':         'Agendar Consulta',
+    'hero.badge':      '🦷 Clínicas Dentales & Estéticas — EE.UU.',
+    'hero.h1':         'Atrae Más Pacientes con Redes Sociales Profesionales &amp; Anuncios Pagados',
+    'hero.sub':        'Aumenta consultas en 25-30% en 30 días | Únete a 50+ clínicas en EE.UU.',
+    'hero.cta1':       'Consulta Gratuita',
+    'hero.cta2':       'Ver Resultados',
+    'hero.trust':      'Con la confianza de 50+ clínicas en Florida, Texas, California y más',
+    'hero.card1t':     '+32% Consultas',
+    'hero.card1s':     'Smile Center, FL',
+    'hero.card2t':     'ROAS 3.8×',
+    'hero.card2s':     'Premier Dental, TX',
+    'hero.card3t':     'Resultados en 14 días',
+    'hero.card3s':     'EliteSmile, CA',
+    'hero.igCaption':  'Transforma tu sonrisa ✨ ¡Reserva ya!',
+    'hero.scroll':     'Desliza para explorar',
+    'trust.label':     'Con la confianza de clínicas en todo EE.UU.',
+    'prob.tag':        'El Problema',
+    'prob.h2':         'Por Qué la Mayoría de Clínicas No Consiguen Pacientes Online',
+    'prob.c1.title':   'Las Fotos No Son Suficientes',
+    'prob.c1.body':    'La mayoría de clínicas depende de fotos y texto. Los pacientes hacen scroll sin detenerse y pierdes reservas todos los días.',
+    'prob.c2.title':   'Los Videos Convierten',
+    'prob.c2.body':    'Los videos profesionales muestran emoción, transformación y construyen la confianza que convierte a un desconocido en un paciente.',
+    'prob.c3.title':   'Nosotros lo Creamos Todo',
+    'prob.c3.body':    'Posts, reels, campañas y optimización — todo hecho para ti. Tú te enfocas en los pacientes, nosotros en el crecimiento.',
+    'stats.s1':        'Aumento Promedio de Consultas',
+    'stats.s2':        'Días Promedio para ROI',
+    'stats.s3':        'Clínicas que Hemos Ayudado',
+    'stats.s4':        'Tasa de Satisfacción de Clientes',
+    'pkg.tag':         'Precios & Servicios',
+    'pkg.h2':          'Elige el Plan que Hace Crecer Tu Clínica',
+    'pkg.sub':         'Precios transparentes. Sin tarifas ocultas. El presupuesto de ads se paga directamente a las plataformas.',
+    'pkg.s.name':      'BÁSICO', 'pkg.s.desc':'Para clínicas que recién empiezan',
+    'pkg.s.f1':'✅ 4 posts/mes','pkg.s.f2':'✅ 2 reels/mes',
+    'pkg.s.f3':'✅ Community management básico','pkg.s.f4':'✅ Respuesta a comentarios <24h',
+    'pkg.s.f5':'✅ 1 reporte mensual','pkg.s.f6':'✅ Soporte por email',
+    'pkg.s.f7':'❌ Gestión de anuncios','pkg.s.f8':'❌ Videos testimoniales',
+    'pkg.s.platforms':'📱 Instagram + Facebook','pkg.s.contract':'⏱ Mínimo 1 mes',
+    'pkg.s.cta':'Comenzar','pkg.s.note':'Presupuesto de ads: No incluido',
+    'pkg.p.ribbon':'MÁS POPULAR','pkg.p.name':'PROFESIONAL','pkg.p.desc':'Para clínicas en crecimiento',
+    'pkg.p.f1':'✅ 8 posts/mes (2 por semana)','pkg.p.f2':'✅ 4 reels/mes (30–45 seg)',
+    'pkg.p.f3':'✅ Community management completo','pkg.p.f4':'✅ Comentarios/DMs <4h',
+    'pkg.p.f5':'✅ Análisis de engagement','pkg.p.f6':'✅ 2 reportes mensuales detallados',
+    'pkg.p.f7':'✅ Soporte email + chat','pkg.p.f8':'✅ Configuración y seguimiento de ads incluido',
+    'pkg.p.platforms':'📱 Instagram + Facebook + TikTok',
+    'pkg.p.ads':'💰 Presupuesto ads: $500–1,000/mes (cliente paga plataforma)',
+    'pkg.p.contract':'⏱ Mínimo 3 meses','pkg.p.cta':'Comenzar Ahora','pkg.p.note':'⭐ Opción más popular',
+    'pkg.pr.name':'PREMIUM','pkg.pr.desc':'Para crecimiento serio',
+    'pkg.pr.f1':'✅ 12 posts/mes (3 por semana)','pkg.pr.f2':'✅ 8 reels/mes (60 seg)',
+    'pkg.pr.f3':'✅ 1 carrusel avanzado/mes','pkg.pr.f4':'✅ Creación de contenido profesional',
+    'pkg.pr.f5':'✅ Community management 24/7','pkg.pr.f6':'✅ Comentarios/DMs <2h',
+    'pkg.pr.f7':'✅ 4 reportes mensuales detallados','pkg.pr.f8':'✅ Consultoría de estrategia 1×/mes',
+    'pkg.pr.f9':'✅ Gestión avanzada de ads','pkg.pr.f10':'✅ A/B testing y optimización',
+    'pkg.pr.f11':'✅ Optimización de landing page','pkg.pr.f12':'✅ Reportes semanales de ROAS',
+    'pkg.pr.platforms':'📱 Instagram + Facebook + TikTok + Google Ads',
+    'pkg.pr.ads':'💰 Presupuesto ads: $1,000–2,000/mes (cliente paga plataforma)',
+    'pkg.pr.contract':'⏱ Mínimo 3 meses','pkg.pr.cta':'Obtener Premium','pkg.pr.note':'Mejor para clínicas en crecimiento',
+    'pkg.v.name':'VIP','pkg.v.desc':'Para clínicas premium',
+    'pkg.v.f1':'✅ 16+ posts/mes (4 por semana)','pkg.v.f2':'✅ 12 reels/mes (90+ seg, alta producción)',
+    'pkg.v.f3':'✅ 2 carruseles avanzados/mes','pkg.v.f4':'✅ 2 videos testimoniales profesionales/mes',
+    'pkg.v.f5':'✅ Creación de contenido profesional','pkg.v.f6':'✅ Community management premium 24/7',
+    'pkg.v.f7':'✅ Respuesta DMs <30 minutos','pkg.v.f8':'✅ 4 reportes + analíticas diarias',
+    'pkg.v.f9':'✅ 2 consultorías de estrategia/mes','pkg.v.f10':'✅ Ads avanzados (FB, IG, Google, TikTok)',
+    'pkg.v.f11':'✅ A/B testing exhaustivo','pkg.v.f12':'✅ Creación y optimización de landing page',
+    'pkg.v.f13':'✅ Reportes diarios de ROAS','pkg.v.f14':'✅ Análisis competitivo mensual',
+    'pkg.v.f15':'✅ Soporte telefónico prioritario 24/7',
+    'pkg.v.platforms':'📱 Instagram + Facebook + TikTok + Google + LinkedIn',
+    'pkg.v.ads':'💰 Presupuesto ads: $2,000–3,500/mes (cliente paga plataforma)',
+    'pkg.v.contract':'⏱ Mínimo 6 meses','pkg.v.cta':'Ir VIP','pkg.v.note':'🏆 Paquete más completo',
+    'pkg.bottomNote':'💡 ¿No sabes qué plan elegir?',
+    'pkg.chat':'Agenda una llamada gratuita de 15 min',
+    'cmp.tag':'Comparativa','cmp.h2':'Compara Todos los Planes',
+    'cmp.feature':'Característica','cmp.starter':'Básico','cmp.pro':'Profesional',
+    'cmp.premium':'Premium','cmp.vip':'VIP',
+    'cmp.r1':'Posts/mes','cmp.r2':'Reels/mes','cmp.r3':'Carruseles/mes',
+    'cmp.r4':'Videos testimoniales','cmp.r5':'Community management',
+    'cmp.r6':'Reportes mensuales','cmp.r7':'Gestión de ads','cmp.r8':'Landing pages',
+    'cmp.r9':'Google Ads','cmp.r10':'TikTok Ads','cmp.r11':'Consultorías de estrategia','cmp.r12':'Soporte',
+    'cmp.basic':'Básico','cmp.complete':'Completo','cmp.full247':'24/7','cmp.premium247':'24/7 Premium',
+    'cmp.daily':'4 + Diario','cmp.optimization':'Optimización','cmp.creation':'Creación + Opt.',
+    'cmp.monthly':'1×/mes','cmp.bimonthly':'2×/mes','cmp.phone247':'Teléfono 24/7',
+    'proc.tag':'Cómo Funciona','proc.h2':'De la Primera Llamada a la Agenda Llena — 5 Pasos',
+    'proc.sub':'Nosotros manejamos todo. Tú te enfocas en tratar pacientes.',
+    'proc.s1.t':'Agenda una Llamada','proc.s1.b':'Programa tu consulta gratuita de 15 min con Benjamin para hablar sobre los objetivos y desafíos de tu clínica.',
+    'proc.s2.t':'Sesión de Estrategia','proc.s2.b':'Analizamos tu clínica, audiencia, competidores y objetivos para crear una estrategia personalizada de redes y ads.',
+    'proc.s3.t':'Creación de Contenido','proc.s3.b':'Creamos posts, reels, carruseles y creatividades de ads adaptadas a la marca de tu clínica y tu demografía de pacientes.',
+    'proc.s4.t':'Lanzamiento y Optimización','proc.s4.b':'Publicamos contenido según el calendario y lanzamos campañas de ads optimizadas que apuntan a pacientes buscando activamente tus servicios.',
+    'proc.s5.t':'Seguimiento de Resultados','proc.s5.b':'Reportes mensuales con métricas claras — consultas de pacientes, ROAS, engagement y crecimiento — para que siempre conozcas tu ROI.',
+    'port.tag':'Casos de Éxito','port.h2':'Antes y Después: Resultados Reales',
+    'port.sub':'Los resultados exactos que hemos logrado para clínicas como la tuya.',
+    'port.before':'ANTES','port.after':'DESPUÉS',
+    'port.c1.before':'Sin presencia social, solo fotos de stock, 120 seguidores',
+    'port.c1.after':'Reels profesionales, ads segmentados, 3.2K seguidores',
+    'port.c1.quote':'"Benjamin aumentó nuestras consultas en un 32% en solo 6 semanas. ROI increíble."',
+    'port.c2.before':'Publicaciones inconsistentes, bajo engagement, sin anuncios',
+    'port.c2.after':'Reels consistentes, ROAS 3.8× en Google Ads, 8.7K seguidores',
+    'port.c2.quote':'"Nuestros Google Ads corren a 3.8× ROAS. La mejor inversión de marketing que hemos hecho."',
+    'port.c3.before':'Contenido genérico, sin video, calificación 3.6 en Google',
+    'port.c3.after':'Videos testimoniales, contenido de confianza, reels virales',
+    'port.c3.quote':'"Nuestra calificación de Google pasó de 3.6 a 4.9 estrellas. Los testimoniales en video cambiaron todo."',
+    'port.c4.before':'Gastando $800/mes en ads sin estrategia, cero conversiones',
+    'port.c4.after':'Campañas optimizadas, landing page, A/B testing',
+    'port.c4.quote':'"Pasamos de desperdiciar presupuesto a una tasa de conversión del 4.2% en menos de 45 días."',
+    'testi.tag':'Testimonios','testi.h2':'Lo Que Dicen Nuestros Clientes','testi.sub':'Doctores reales. Clínicas reales. Resultados reales.',
+    'testi.t1.q':'"Benjamin aumentó nuestras consultas de pacientes en un 32% en solo 6 semanas. Su estrategia fue clara, la comunicación excelente y los resultados hablan por sí solos. Lo recomiendo ampliamente."',
+    'testi.t1.r':'📈 +32% consultas · 6 semanas',
+    'testi.t2.q':'"Era escéptico sobre los anuncios pagados, pero Benjamin nos mostró exactamente a dónde iba cada dólar. Nuestros Google Ads corren a 3.8× ROAS y nuestras reservas de Invisalign se triplicaron."',
+    'testi.t2.r':'📈 ROAS 3.8× · Invisalign ×3',
+    'testi.t3.q':'"Los videos testimoniales que Benjamin creó para nosotros cambiaron todo. Nuestra calificación de Google pasó de 3.6 a 4.9 estrellas y los nuevos pacientes mencionan específicamente haber visto nuestro contenido."',
+    'testi.t3.r':'📈 3.6 → 4.9 Google · 60 días',
+    'testi.t4.q':'"Estábamos desperdiciando $800/mes en anuncios sin resultados. Benjamin reestructuró todo — nueva landing page, A/B testing, segmentación correcta. Ahora tenemos una tasa de conversión del 4.2%."',
+    'testi.t4.r':'📈 0.4% → 4.2% conversión · 45 días',
+    'faq.h2':'Preguntas Frecuentes',
+    'faq.q1':'¿Cuánto tiempo tarda en ver resultados?',
+    'faq.a1':'La mayoría de las clínicas ve un aumento en las consultas de pacientes dentro de los 30 días de lanzar contenido y anuncios. Algunas ven resultados en tan solo 2 semanas, especialmente con campañas pagas desde el día uno.',
+    'faq.q2':'¿Ofrecen revisiones?',
+    'faq.a2':'¡Sí! Los paquetes Profesional y Premium incluyen 2–3 revisiones por pieza de contenido al mes. El paquete VIP incluye revisiones ilimitadas para asegurarse de que todo sea exactamente correcto.',
+    'faq.q3':'¿Qué pasa si no me gusta el contenido?',
+    'faq.a3':'Ofrecemos una garantía de satisfacción de 14 días. Si no estás satisfecho con nuestro trabajo durante los primeros 14 días, revisaremos todo u ofreceremos un reembolso completo, sin preguntas.',
+    'faq.q4':'¿Puedo ver ejemplos primero?',
+    'faq.a4':'¡Por supuesto! Tenemos un portafolio completo de ejemplos antes y después, casos de éxito y contenido de muestra. Agenda una llamada gratuita de 15 min y te mostramos todo específico a tu especialidad.',
+    'faq.q5':'¿Pago los anuncios por separado?',
+    'faq.a5':'Sí. El presupuesto de anuncios (Facebook, Instagram, Google, TikTok) lo pagas tú directamente a las plataformas. Nuestra tarifa de gestión cubre estrategia, creación, configuración, optimización y reportes, no el gasto en anuncios.',
+    'faq.q6':'¿Trabajan con otras especialidades?',
+    'faq.a6':'Nuestro enfoque principal son las clínicas dentales y estéticas, pero también trabajamos con dermatología, ortopedia, spas médicos y otras prácticas de salud en EE.UU.',
+    'faq.q7':'¿Cuál es la política de cancelación?',
+    'faq.a7':'Básico: Sin compromiso mínimo, cancela cuando quieras. Profesional y Premium: Aviso escrito de 30 días. VIP: Debe completar el compromiso inicial de 6 meses; luego mes a mes con 30 días de aviso.',
+    'faq.q8':'¿Cuántos posts por semana puedo esperar?',
+    'faq.a8':'Básico: ~1/semana. Profesional: 2/semana. Premium: 3/semana. VIP: 4/semana. Cada plan también incluye reels todas las semanas, además de los posts regulares.',
+    'cta.h2':'¿Listo para Atraer Más Pacientes?',
+    'cta.sub':'Únete a 50+ clínicas que generan más consultas con gestión profesional de redes sociales &amp; ads',
+    'cta.c1.title':'Agenda una Consulta Gratuita','cta.c1.sub':'Llamada de 15 min con Benjamin para hablar de los objetivos de tu clínica — sin presión, solo estrategia.','cta.c1.btn':'Agendar Ahora →',
+    'cta.c2.title':'Descarga Nuestra Guía Gratis','cta.c2.sub':'"Cómo Atraer Pacientes con Video Marketing" — PDF práctico para clínicas dentales.','cta.c2.btn':'Obtener PDF Gratis →',
+    'footer.brand':'Gestión de Redes Sociales y Ads para Clínicas Dentales y Estéticas en EE.UU. Haciendo crecer prácticas, un reel a la vez.',
+    'footer.h1':'Enlaces Rápidos','footer.h2':'Contacto','footer.h3':'Newsletter',
+    'footer.newsub':'Recibe tips de marketing gratis para clínicas dentales.',
+    'footer.ph':'tu@email.com','footer.subscribe':'Suscribirse',
+    'footer.privacy':'Política de Privacidad','footer.terms':'Términos de Servicio',
+    'footer.copy':'© 2025 Benjamin Tapia. Todos los derechos reservados.',
   }
 };
 
 // ===== APPLY LANGUAGE =====
-function applyLanguage(lang) {
+function applyLang(lang) {
   document.documentElement.lang = lang;
-  localStorage.setItem('dv-lang', lang);
-
-  // Update text content
+  localStorage.setItem('bt-lang', lang);
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    const val = translations[lang][key];
-    if (val !== undefined) el.innerHTML = val;
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
   });
-
-  // Update placeholders
   document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const key = el.dataset.i18nPh;
-    const val = translations[lang][key];
-    if (val !== undefined) el.placeholder = val;
+    const v = T[lang][el.dataset.i18nPh];
+    if (v !== undefined) el.placeholder = v;
   });
-
-  // Update toggle buttons
-  document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
+  document.querySelectorAll('.lang-toggle-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
 }
 
 // ===== LANGUAGE MODAL =====
 const langModal = document.getElementById('langModal');
-
-function closeModal(lang) {
-  applyLanguage(lang);
+function closeLangModal(lang) {
+  applyLang(lang);
   langModal.classList.add('hiding');
-  setTimeout(() => langModal.style.display = 'none', 400);
+  setTimeout(() => langModal.style.display = 'none', 380);
 }
+langModal.querySelectorAll('.lang-option').forEach(b => b.addEventListener('click', () => closeLangModal(b.dataset.lang)));
+document.querySelectorAll('.lang-toggle-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+const saved = localStorage.getItem('bt-lang');
+if (saved) closeLangModal(saved);
 
-// Open modal on page load (always, so user can choose each visit)
-langModal.querySelectorAll('.lang-option').forEach(btn => {
-  btn.addEventListener('click', () => closeModal(btn.dataset.lang));
-});
+// ===== CALENDLY MODAL =====
+const calModal   = document.getElementById('calendlyModal');
+const calOverlay = document.getElementById('calOverlay');
+const calClose   = document.getElementById('calClose');
+function openCal()  { calModal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+function closeCal() { calModal.style.display = 'none';  document.body.style.overflow = ''; }
+document.querySelectorAll('.open-cal').forEach(el => el.addEventListener('click', openCal));
+calOverlay.addEventListener('click', closeCal);
+calClose.addEventListener('click', closeCal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCal(); });
 
-// Navbar lang toggle (switch without modal)
-document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
-  btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
-});
-
-// Apply saved lang silently if user has a preference (skip modal)
-const savedLang = localStorage.getItem('dv-lang');
-if (savedLang) {
-  closeModal(savedLang);
-}
-
-// ===== NAVBAR SCROLL + MOBILE MENU =====
-const navbar = document.getElementById('navbar');
+// ===== NAVBAR =====
+const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
-
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-});
-
-hamburger.addEventListener('click', () => {
-  navbar.classList.toggle('menu-open');
-});
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => navbar.classList.remove('menu-open'));
-});
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+hamburger.addEventListener('click', () => navbar.classList.toggle('menu-open'));
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navbar.classList.remove('menu-open')));
 
 // ===== SCROLL ANIMATIONS =====
-const observer = new IntersectionObserver(
-  (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
   { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
 );
-document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+document.querySelectorAll('.animate-on-scroll').forEach(el => obs.observe(el));
 
 // ===== FAQ ACCORDION =====
-document.querySelectorAll('.faq-question').forEach(btn => {
+document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
+    const open = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+    if (!open) item.classList.add('open');
   });
-});
-
-// ===== CONTACT FORM =====
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
 });
 
 // ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
+});
+
+// ===== FORMS =====
+document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button');
+  btn.textContent = '✅';
+  setTimeout(() => btn.textContent = T[localStorage.getItem('bt-lang') || 'en']['footer.subscribe'], 2500);
+  this.reset();
 });
