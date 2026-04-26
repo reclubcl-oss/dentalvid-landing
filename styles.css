@@ -489,6 +489,9 @@ a { color: inherit; text-decoration: none; }
   border-radius: 100px;
   margin-bottom: 16px;
 }
+.vip-badge {
+  background: var(--orange);
+}
 .package-tier { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; }
 .package-price {
   font-size: 48px;
