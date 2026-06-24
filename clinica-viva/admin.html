@@ -146,11 +146,7 @@ textarea{height:80px;resize:vertical}
       <div class="step">Copia el token y pégalo abajo junto con los datos de tu repositorio</div>
     </div>
     <div class="setup-form">
-      <div class="form-group"><label>Token de GitHub</label><input id="cfg-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxx"/></div>
-      <div class="form-grid">
-        <div class="form-group"><label>Usuario / Organización GitHub</label><input id="cfg-owner" placeholder="reclubcl-oss"/></div>
-        <div class="form-group"><label>Nombre del repositorio</label><input id="cfg-repo" placeholder="clinica-viva"/></div>
-      </div>
+      <div class="form-group"><label>Token de GitHub</label><input id="cfg-token" type="password" placeholder="github_pat_..."/></div>
       <div id="setup-err"></div>
       <button class="btn btn-red" id="setup-btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
@@ -252,6 +248,14 @@ let pendingFile = null;
 let pendingDataUrl = null;
 let gallery = [];
 let gallerySha = null;
+
+/* ── Auto-config owner/repo ── */
+(function(){
+  const existing = JSON.parse(localStorage.getItem(CFG_KEY)||'null');
+  if(!existing){
+    localStorage.setItem(CFG_KEY, JSON.stringify({token:'',owner:'reclubcl-oss',repo:'dentalvid-landing'}));
+  }
+})();
 
 /* ── Utils ── */
 const $ = id => document.getElementById(id);
@@ -505,15 +509,14 @@ $('cfg-reset-btn').addEventListener('click',()=>{ if(confirm('¿Cambiar configur
 /* ── Setup ── */
 $('setup-btn').addEventListener('click', async()=>{
   const token=$('cfg-token').value.trim();
-  const owner=$('cfg-owner').value.trim();
-  const repo=$('cfg-repo').value.trim();
   const err=$('setup-err');
   err.style.display='none';
-  if(!token||!owner||!repo){ err.textContent='Completa todos los campos.'; err.style.display='block'; return; }
+  if(!token){ err.textContent='Pega tu token de GitHub.'; err.style.display='block'; return; }
 
   const btn=$('setup-btn'); btn.disabled=true; btn.textContent='Verificando...';
   try{
-    const cfg={token,owner,repo};
+    const existing = getCfg()||{};
+    const cfg={token, owner: existing.owner||'reclubcl-oss', repo: existing.repo||'dentalvid-landing'};
     setCfg(cfg);
     // Test connection + create gallery.json if not exists
     const {content,sha}=await ghGet('gallery.json');
