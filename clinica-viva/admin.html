@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Panel de Control — Clínica Estética Viva</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C0001A;--red-glow:rgba(192,0,26,.35);
+  --bg:#07000E;--card:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.08);--muted:rgba(255,255,255,.45);
+  --radius:16px;
+}
+body{font-family:'Lato',sans-serif;background:var(--bg);color:#fff;min-height:100vh}
+
+/* ── shared ── */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.6rem;border-radius:12px;font-size:.93rem;font-weight:700;font-family:'Lato',sans-serif;cursor:pointer;border:none;transition:opacity .2s}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{opacity:.88}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}.btn-ghost:hover{border-color:rgba(255,255,255,.2);color:#fff}
+.btn-sm{padding:.5rem 1rem;font-size:.82rem;border-radius:8px}
+input,textarea,select{font-family:'Lato',sans-serif;font-size:.93rem;padding:.8rem 1rem;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid var(--border);color:#fff;outline:none;transition:border .2s;width:100%}
+input:focus,textarea:focus,select:focus{border-color:rgba(192,0,26,.5)}
+input::placeholder,textarea::placeholder{color:var(--muted)}
+select option{background:#1a0a0d}
+label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+
+/* ── screens ── */
+.screen{display:none;min-height:100vh}
+.screen.active{display:flex}
+
+/* ── LOGIN ── */
+#s-login{align-items:center;justify-content:center;padding:2rem;background:radial-gradient(ellipse at 50% 0%,rgba(192,0,26,.18),transparent 70%),var(--bg)}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:3rem 2.5rem;max-width:400px;width:100%;text-align:center;backdrop-filter:blur(20px)}
+.login-logo{width:90px;height:90px;border-radius:50%;object-fit:cover;margin:0 auto 1.5rem;display:block;box-shadow:0 0 40px var(--red-glow)}
+.login-box h1{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:.3rem}
+.login-box p{color:var(--muted);font-size:.88rem;margin-bottom:2rem}
+.login-box input{text-align:center;margin-bottom:1rem}
+#login-err{color:#ff6b6b;font-size:.82rem;margin-top:.5rem;display:none}
+
+/* ── SETUP ── */
+#s-setup{flex-direction:column;align-items:center;justify-content:center;padding:2rem;background:var(--bg)}
+.setup-box{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2.5rem;max-width:560px;width:100%;backdrop-filter:blur(20px)}
+.setup-box h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.4rem}
+.setup-box > p{color:var(--muted);font-size:.88rem;margin-bottom:2rem;line-height:1.6}
+.steps{counter-reset:step;margin-bottom:2rem}
+.step{display:flex;gap:1rem;margin-bottom:1rem;font-size:.85rem;color:rgba(255,255,255,.75);line-height:1.5}
+.step::before{counter-increment:step;content:counter(step);min-width:24px;height:24px;background:rgba(192,0,26,.25);color:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0;margin-top:.1rem}
+.step a{color:#7eb8ff}
+.setup-form{display:flex;flex-direction:column;gap:.9rem}
+#setup-err{color:#ff6b6b;font-size:.82rem;display:none}
+
+/* ── MAIN PANEL ── */
+#s-main{flex-direction:column}
+.panel-header{background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
+.panel-brand{display:flex;align-items:center;gap:.7rem}
+.panel-brand img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.panel-brand span{font-family:'Playfair Display',serif;font-size:1.05rem}
+.header-actions{display:flex;gap:.7rem;align-items:center}
+.deploy-badge{display:none;align-items:center;gap:.5rem;font-size:.8rem;background:rgba(255,165,0,.15);border:1px solid rgba(255,165,0,.3);color:rgba(255,200,50,1);padding:.35rem .8rem;border-radius:20px}
+.deploy-badge.visible{display:flex}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin 1s linear infinite}
+
+.panel-body{max-width:1100px;margin:0 auto;padding:2.5rem 2rem;width:100%}
+.sec-title{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.5rem;padding-bottom:.9rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem}
+.count{background:rgba(192,0,26,.2);color:var(--red);font-size:.75rem;font-weight:700;padding:.15rem .5rem;border-radius:20px}
+
+/* ── DROPZONE ── */
+.dropzone{border:2px dashed rgba(192,0,26,.35);border-radius:20px;padding:3rem 2rem;text-align:center;cursor:pointer;transition:all .25s;background:rgba(192,0,26,.04);position:relative;margin-bottom:2rem}
+.dropzone:hover,.dropzone.over{border-color:var(--red);background:rgba(192,0,26,.09)}
+.dropzone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.dz-icon{width:52px;height:52px;border-radius:14px;background:rgba(192,0,26,.18);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.dropzone h3{font-size:1.05rem;margin-bottom:.35rem}
+.dropzone p{color:var(--muted);font-size:.85rem}
+.dropzone .note{font-size:.76rem;color:rgba(255,255,255,.25);margin-top:.4rem}
+
+/* ── FORM ── */
+.upload-form{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;margin-bottom:2.5rem;display:none}
+.upload-form.open{display:block}
+.preview-box{border-radius:14px;overflow:hidden;background:#1a0008;margin-bottom:1.5rem;position:relative;max-height:300px}
+.preview-box img,.preview-box video{width:100%;max-height:300px;object-fit:cover;display:block}
+.preview-remove{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.7);border:none;color:#fff;border-radius:7px;padding:.3rem .65rem;cursor:pointer;font-size:.78rem;font-family:'Lato',sans-serif}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-grid.full{grid-template-columns:1fr}
+.form-group{display:flex;flex-direction:column}
+textarea{height:80px;resize:vertical}
+.form-actions{display:flex;gap:1rem;margin-top:1.5rem}
+.form-actions .btn-red{flex:1}
+#save-status{font-size:.82rem;color:var(--muted);margin-top:.7rem;text-align:center;min-height:1.2rem}
+
+/* ── GALLERY GRID ── */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.gc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .2s;position:relative}
+.gc:hover{transform:translateY(-3px)}
+.gc-thumb{height:190px;overflow:hidden;background:#1a0008;position:relative}
+.gc-thumb img,.gc-thumb video{width:100%;height:100%;object-fit:cover;display:block}
+.gc-label{position:absolute;top:9px;left:9px;background:rgba(0,0,0,.65);color:rgba(255,255,255,.85);font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .5rem;border-radius:5px}
+.gc-del{position:absolute;top:9px;right:9px;background:rgba(192,0,26,.88);border:none;color:#fff;border-radius:7px;padding:.28rem .55rem;cursor:pointer;font-size:.75rem;font-family:'Lato',sans-serif;opacity:0;transition:opacity .2s;display:flex;align-items:center;gap:.3rem}
+.gc:hover .gc-del{opacity:1}
+.gc-info{padding:.9rem 1rem}
+.gc-info h4{font-size:.93rem;font-weight:700;font-family:'Playfair Display',serif;margin-bottom:.25rem}
+.gc-info p{font-size:.76rem;color:var(--muted);line-height:1.5;margin-bottom:.45rem}
+.gc-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.gc-tag{background:rgba(192,0,26,.13);color:rgba(255,255,255,.65);font-size:.69rem;padding:.18rem .5rem;border-radius:20px;font-weight:700}
+.empty{grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--muted)}
+.empty svg{opacity:.25;margin-bottom:.8rem}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:2rem;right:2rem;z-index:999;background:rgba(15,5,10,.96);border:1px solid var(--border);border-radius:12px;padding:.85rem 1.3rem;font-size:.86rem;transform:translateY(16px);opacity:0;transition:all .3s;pointer-events:none;backdrop-filter:blur(20px);max-width:300px}
+#toast.on{transform:translateY(0);opacity:1}
+#toast.ok{border-color:rgba(37,211,102,.3)}
+
+@media(max-width:768px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .form-grid{grid-template-columns:1fr}
+  .panel-body{padding:1.5rem 1rem}
+  .panel-header{padding:.8rem 1rem}
+}
+@media(max-width:480px){.gallery-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div class="screen active" id="s-login">
+  <div class="login-box">
+    <img src="CLINICA.PNG" class="login-logo" alt="Logo"/>
+    <h1>Panel de Control</h1>
+    <p>Clínica Estética Viva · Galería de Resultados</p>
+    <input type="password" id="pwd" placeholder="Contraseña" autocomplete="current-password"/>
+    <button class="btn btn-red" style="width:100%" id="login-btn">Ingresar</button>
+    <div id="login-err">Contraseña incorrecta</div>
+  </div>
+</div>
+
+<!-- ── SETUP ── -->
+<div class="screen" id="s-setup">
+  <div class="setup-box">
+    <h2>Configuración inicial</h2>
+    <p>Para que las imágenes aparezcan en el sitio web para todos los visitantes, necesitas conectar tu repositorio de GitHub. Solo se hace una vez.</p>
+    <div class="steps">
+      <div class="step">Ve a <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens</a> → <strong>Generate new token (classic)</strong></div>
+      <div class="step">Marca el permiso <strong>repo</strong> (acceso completo al repositorio) y crea el token</div>
+      <div class="step">Copia el token y pégalo abajo junto con los datos de tu repositorio</div>
+    </div>
+    <div class="setup-form">
+      <div class="form-group"><label>Token de GitHub</label><input id="cfg-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxx"/></div>
+      <div class="form-grid">
+        <div class="form-group"><label>Usuario / Organización GitHub</label><input id="cfg-owner" placeholder="reclubcl-oss"/></div>
+        <div class="form-group"><label>Nombre del repositorio</label><input id="cfg-repo" placeholder="clinica-viva"/></div>
+      </div>
+      <div id="setup-err"></div>
+      <button class="btn btn-red" id="setup-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+        Conectar y continuar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="screen" id="s-main">
+  <header class="panel-header">
+    <div class="panel-brand">
+      <img src="CLINICA.PNG" alt="Logo"/>
+      <span>Panel de Control</span>
+    </div>
+    <div class="header-actions">
+      <div class="deploy-badge" id="deploy-badge">
+        <svg class="spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>
+        Publicando en sitio web...
+      </div>
+      <button class="btn btn-ghost btn-sm" id="cfg-reset-btn">⚙ Config</button>
+      <button class="btn btn-ghost btn-sm" id="logout-btn">Salir</button>
+    </div>
+  </header>
+
+  <div class="panel-body">
+
+    <div class="sec-title">Subir nuevo resultado</div>
+
+    <!-- Drop zone -->
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="file-input" accept="image/*,video/*"/>
+      <div class="dz-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C0001A" stroke-width="2">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+      </div>
+      <h3>Arrastra tu imagen o video aquí</h3>
+      <p>o haz clic para seleccionar desde tu dispositivo</p>
+      <p class="note">JPG, PNG, WEBP, MP4 · Máx. 20MB · Se comprimen automáticamente</p>
+    </div>
+
+    <!-- Upload form -->
+    <div class="upload-form" id="upload-form">
+      <div class="preview-box" id="preview-box"></div>
+      <div class="form-grid">
+        <div class="form-group"><label>Título del resultado</label><input id="f-title" placeholder="Ej: Rejuvenecimiento Facial"/></div>
+        <div class="form-group"><label>Tratamiento</label>
+          <select id="f-treatment">
+            <option value="">Seleccionar...</option>
+            <option>Roller Facial y Corporal</option><option>Prosculpt</option>
+            <option>Liposonix</option><option>Lipomasaje</option>
+            <option>MPT</option><option>Limpieza de Cutis</option><option>Otro</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label>Nº de sesiones</label><input id="f-sessions" placeholder="Ej: 6 sesiones"/></div>
+        <div class="form-group"><label>Zona tratada</label><input id="f-zone" placeholder="Ej: Rostro, Abdomen..."/></div>
+      </div>
+      <div class="form-grid full">
+        <div class="form-group"><label>Descripción</label><textarea id="f-desc" placeholder="Breve descripción del tratamiento y resultado..."></textarea></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-red" id="save-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="20"/></svg>
+          Publicar en el sitio web
+        </button>
+        <button class="btn btn-ghost" id="cancel-btn">Cancelar</button>
+      </div>
+      <div id="save-status"></div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="sec-title">
+      Galería publicada
+      <span class="count" id="count">0</span>
+    </div>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="empty">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+        <p>Aún no hay resultados publicados.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+'use strict';
+const PWD = 'viva2024';
+const CFG_KEY = 'viva-gh-cfg';
+const FILE_PREFIX = 'clinica-viva/'; // path inside the GitHub repo
+
+let pendingFile = null;
+let pendingDataUrl = null;
+let gallery = [];
+let gallerySha = null;
+
+/* ── Utils ── */
+const $ = id => document.getElementById(id);
+function show(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); $(id).classList.add('active'); }
+function toast(msg, ok=true){
+  const t=$('toast'); t.textContent=msg; t.className='on'+(ok?' ok':'');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.className='',3200);
+}
+function setStatus(msg){ $('save-status').textContent=msg; }
+
+/* ── Config ── */
+function getCfg(){ try{ return JSON.parse(localStorage.getItem(CFG_KEY)); }catch{return null;} }
+function setCfg(c){ localStorage.setItem(CFG_KEY,JSON.stringify(c)); }
+
+/* ── GitHub API ── */
+async function ghFetch(method, path, body=null){
+  const cfg = getCfg();
+  const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${FILE_PREFIX}${path}`;
+  const r = await fetch(url,{
+    method,
+    headers:{ 'Authorization':`Bearer ${cfg.token}`, 'Accept':'application/vnd.github.v3+json', 'Content-Type':'application/json' },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if(!r.ok){ const e=await r.json().catch(()=>{}); throw new Error(e?.message||`GitHub ${r.status}`); }
+  return r.json();
+}
+
+async function ghGet(path){
+  try{
+    const d = await ghFetch('GET', path);
+    return { content: decodeURIComponent(escape(atob(d.content.replace(/\n/g,'')))), sha: d.sha };
+  }catch(e){
+    if(e.message.includes('404')||e.message.includes('Not Found')) return {content:null,sha:null};
+    throw e;
+  }
+}
+
+async function ghPut(path, content, sha, message){
+  const encoded = btoa(unescape(encodeURIComponent(content)));
+  return ghFetch('PUT', path, { message, content:encoded, ...(sha?{sha}:{}) });
+}
+
+async function ghPutBinary(path, base64, sha, message){
+  return ghFetch('PUT', path, { message, content:base64, ...(sha?{sha}:{}) });
+}
+
+/* ── Gallery JSON ── */
+async function loadGallery(){
+  const { content, sha } = await ghGet('gallery.json');
+  gallerySha = sha;
+  gallery = content ? JSON.parse(content) : [];
+  renderGallery();
+}
+
+async function saveGalleryJson(){
+  const res = await ghPut('gallery.json', JSON.stringify(gallery, null, 2), gallerySha, '📸 Galería actualizada');
+  gallerySha = res.content.sha;
+}
+
+/* ── Image compression ── */
+function compressImage(file, maxPx=1400, quality=0.85){
+  return new Promise(resolve=>{
+    if(file.type.startsWith('video/')){ resolve(file); return; }
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = ()=>{
+      const ratio = Math.min(1, maxPx/Math.max(img.width,img.height));
+      const canvas = document.createElement('canvas');
+      canvas.width  = Math.round(img.width  * ratio);
+      canvas.height = Math.round(img.height * ratio);
+      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+      URL.revokeObjectURL(url);
+      canvas.toBlob(b=>resolve(b),'image/jpeg',quality);
+    };
+    img.onerror = ()=>{ URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+}
+
+function blobToBase64(blob){
+  return new Promise((res,rej)=>{
+    const r = new FileReader();
+    r.onload = e => res(e.target.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(blob);
+  });
+}
+
+/* ── Upload handler ── */
+function handleFile(file){
+  if(file.size > 20*1024*1024){ toast('El archivo supera 20MB. Comprime el video o usa una imagen más pequeña.',false); return; }
+  pendingFile = file;
+  const reader = new FileReader();
+  reader.onload = e=>{
+    pendingDataUrl = e.target.result;
+    const isVideo = file.type.startsWith('video/');
+    $('preview-box').innerHTML = (isVideo
+      ? `<video src="${pendingDataUrl}" controls muted style="width:100%;max-height:280px;object-fit:cover"></video>`
+      : `<img src="${pendingDataUrl}" alt="preview" style="width:100%;max-height:280px;object-fit:cover"/>`)
+      + `<button class="preview-remove" onclick="cancelUpload()">✕ Quitar</button>`;
+    $('upload-form').classList.add('open');
+    $('f-title').focus();
+  };
+  reader.readAsDataURL(file);
+}
+
+function cancelUpload(){
+  pendingFile = pendingDataUrl = null;
+  $('upload-form').classList.remove('open');
+  $('preview-box').innerHTML='';
+  ['f-title','f-sessions','f-zone','f-desc'].forEach(id=>$(id).value='');
+  $('f-treatment').value='';
+  setStatus('');
+}
+
+/* ── Save ── */
+$('save-btn').addEventListener('click', async()=>{
+  if(!pendingFile) return;
+  const title = $('f-title').value.trim();
+  if(!title){ toast('Agrega un título.',false); $('f-title').focus(); return; }
+
+  const btn = $('save-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<svg class="spin" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg> Subiendo...';
+
+  try {
+    setStatus('Comprimiendo imagen...');
+    const compressed = await compressImage(pendingFile);
+    const base64 = await blobToBase64(compressed);
+    const isVideo = pendingFile.type.startsWith('video/');
+    const id = Date.now();
+    const ext = isVideo ? 'mp4' : 'jpg';
+    const filename = `gallery/result-${id}.${ext}`;
+
+    setStatus('Subiendo al repositorio...');
+    await ghPutBinary(filename, base64, null, `📸 Resultado ${id}`);
+
+    const item = {
+      id, type: isVideo?'video':'image',
+      url: `/gallery/result-${id}.${ext}`,
+      title,
+      treatment: $('f-treatment').value,
+      sessions:  $('f-sessions').value.trim(),
+      zone:      $('f-zone').value.trim(),
+      description: $('f-desc').value.trim(),
+      createdAt: id
+    };
+
+    setStatus('Actualizando galería...');
+    gallery.unshift(item);
+    await saveGalleryJson();
+
+    setStatus('');
+    cancelUpload();
+    renderGallery();
+    showDeployBadge();
+    toast('¡Resultado publicado! El sitio se actualizará en ~1 minuto.');
+  } catch(e){
+    setStatus('');
+    toast('Error: ' + e.message, false);
+    console.error(e);
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="20"/></svg> Publicar en el sitio web';
+});
+
+$('cancel-btn').addEventListener('click', cancelUpload);
+
+/* ── Delete ── */
+async function deleteItem(id){
+  if(!confirm('¿Eliminar este resultado del sitio web?')) return;
+  gallery = gallery.filter(i=>i.id!==id);
+  try{
+    await saveGalleryJson();
+    renderGallery();
+    showDeployBadge();
+    toast('Eliminado. El sitio se actualizará en ~1 minuto.');
+  }catch(e){ toast('Error: '+e.message,false); }
+}
+
+/* ── Render ── */
+function renderGallery(){
+  $('count').textContent = gallery.length;
+  if(!gallery.length){
+    $('gallery-grid').innerHTML=`<div class="empty"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><p>Aún no hay resultados. Sube tu primera imagen arriba.</p></div>`;
+    return;
+  }
+  $('gallery-grid').innerHTML = gallery.map(item=>`
+    <div class="gc">
+      <div class="gc-thumb">
+        ${item.type==='video'
+          ? `<video src="${item.url}" muted playsinline style="width:100%;height:100%;object-fit:cover"></video>`
+          : `<img src="${item.url}" alt="${item.title}" loading="lazy"/>`}
+        <div class="gc-label">${item.type==='video'?'▶ Video':'🖼 Foto'}</div>
+        <button class="gc-del" onclick="deleteItem(${item.id})">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3,6 5,6 21,6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          Eliminar
+        </button>
+      </div>
+      <div class="gc-info">
+        <h4>${item.title}</h4>
+        ${item.description?`<p>${item.description}</p>`:''}
+        <div class="gc-tags">
+          ${item.treatment?`<span class="gc-tag">${item.treatment}</span>`:''}
+          ${item.sessions?`<span class="gc-tag">${item.sessions}</span>`:''}
+          ${item.zone?`<span class="gc-tag">${item.zone}</span>`:''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ── Deploy badge ── */
+function showDeployBadge(){
+  const b=$('deploy-badge'); b.classList.add('visible');
+  clearTimeout(b._t); b._t=setTimeout(()=>b.classList.remove('visible'),90000);
+}
+
+/* ── Drag & Drop ── */
+const dz = $('dropzone'), fi = $('file-input');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('over')});
+dz.addEventListener('dragleave',()=>dz.classList.remove('over'));
+dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('over');if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);});
+fi.addEventListener('change',e=>{if(e.target.files[0])handleFile(e.target.files[0]);fi.value='';});
+
+/* ── Auth ── */
+$('login-btn').addEventListener('click', doLogin);
+$('pwd').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
+function doLogin(){
+  if($('pwd').value===PWD){
+    sessionStorage.setItem('viva-ok','1');
+    $('login-err').style.display='none';
+    afterLogin();
+  } else {
+    $('login-err').style.display='block';
+    $('pwd').value=''; $('pwd').focus();
+  }
+}
+
+function afterLogin(){
+  const cfg = getCfg();
+  if(!cfg){ show('s-setup'); return; }
+  show('s-main');
+  loadGallery().catch(e=>toast('Error cargando galería: '+e.message,false));
+}
+
+$('logout-btn').addEventListener('click',()=>{ sessionStorage.removeItem('viva-ok'); location.reload(); });
+$('cfg-reset-btn').addEventListener('click',()=>{ if(confirm('¿Cambiar configuración de GitHub?')){ localStorage.removeItem(CFG_KEY); show('s-setup'); } });
+
+/* ── Setup ── */
+$('setup-btn').addEventListener('click', async()=>{
+  const token=$('cfg-token').value.trim();
+  const owner=$('cfg-owner').value.trim();
+  const repo=$('cfg-repo').value.trim();
+  const err=$('setup-err');
+  err.style.display='none';
+  if(!token||!owner||!repo){ err.textContent='Completa todos los campos.'; err.style.display='block'; return; }
+
+  const btn=$('setup-btn'); btn.disabled=true; btn.textContent='Verificando...';
+  try{
+    const cfg={token,owner,repo};
+    setCfg(cfg);
+    // Test connection + create gallery.json if not exists
+    const {content,sha}=await ghGet('gallery.json');
+    gallerySha=sha;
+    if(!content){
+      // Create empty gallery.json
+      await ghPut('gallery.json','[]',null,'🎉 Inicializar galería');
+      // Create gallery folder placeholder
+      await ghPutBinary('gallery/.gitkeep','',null,'📁 Crear carpeta de galería');
+      gallery=[];
+    } else {
+      gallery=JSON.parse(content);
+    }
+    show('s-main');
+    renderGallery();
+    toast('Conectado correctamente a GitHub ✓');
+  }catch(e){
+    err.textContent='Error: '+e.message+'. Verifica el token y los datos del repo.';
+    err.style.display='block';
+    localStorage.removeItem(CFG_KEY);
+  }
+  btn.disabled=false; btn.textContent='Conectar y continuar';
+});
+
+/* ── Init ── */
+if(sessionStorage.getItem('viva-ok')==='1') afterLogin();
+</script>
+</body>
+</html>
