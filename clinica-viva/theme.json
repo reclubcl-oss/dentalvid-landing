@@ -1,10 +1,10 @@
 {
-  "accent": "#a0294f",
-  "bg": "#ffffff",
-  "card": "#180010",
-  "rose": "#f4a7c0",
-  "headingColor": "#000000",
-  "textColor": "#000000",
+  "accent": "#c0001a",
+  "bg": "#070002",
+  "card": "#1a000a",
+  "rose": "#ff8fa3",
+  "headingColor": "#ffffff",
+  "textColor": "#cccccc",
   "headingFont": "Playfair Display",
   "bodyFont": "Lato"
 }
